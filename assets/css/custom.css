@@ -431,6 +431,7 @@
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.16);
     background-color: #ededed;
     position: relative;
+    min-height: 200px;
 }
 .min_producto_2 .box_oferta{
     background-color: #627681;
