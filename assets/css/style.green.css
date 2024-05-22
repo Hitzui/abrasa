@@ -383,8 +383,8 @@ p.lead {
 }
 
 .icon-outlined {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   line-height: 80px;
   text-align: center;
   display: inline-block;
@@ -392,6 +392,14 @@ p.lead {
   border-radius: 50%;
   border: 2px solid #fff;
   margin-bottom: 20px;
+}
+
+.icon-outlined img{
+  position: absolute;
+  top: 50%;
+  transform: translate(-45%,-50%);
+  width: 100px;
+  height: 100px;
 }
 
 .icon-outlined.icon-lg {

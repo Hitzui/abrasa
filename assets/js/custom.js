@@ -200,7 +200,7 @@ function createPopUp(currentFeature) {
             '<h3 class="text-center">' + currentFeature.properties.storeName + '</h3>' +
             '<p><b>Dirección:</b>' + currentFeature.properties.address + '</p><p><b>Teléfono: </b>' + currentFeature.properties.phoneFormatted +
             '</p><p><b>Cobertura:</b>' + currentFeature.properties.cobertura + '</p>' +
-            '<p><b>Ejecutivo de Venta:</b>' + currentFeature.properties.ejecutivo + '</p>' +
+            '<p><b>Responsable de Tienda:</b>' + currentFeature.properties.ejecutivo + '</p>' +
             '<div><img class="img-fluid" src="' + currentFeature.properties.imagen + '" alt="Abrasa"/></div>'
             + '</div>'
         )
