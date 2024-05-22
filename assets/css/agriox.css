@@ -20,9 +20,9 @@
   --agriox-font: 'DM Sans', sans-serif;
   --agriox-font-2: 'Averia Sans Libre', cursive;
   --agriox-font-3: 'Shadows Into Light', cursive;
-  --agriox-base: #f7b34d;
+  --agriox-base: #f39200;
   --agriox-base-rgb: 241, 207, 105;
-  --agriox-primary: #48ad44;
+  --agriox-primary: #3aa935;
   --agriox-primary-rgb: 51, 75, 53;
   --agriox-secondary: #6d8c54;
   --agriox-secondary-rgb: 109, 140, 84;
@@ -265,7 +265,7 @@ button {
   border: none;
   outline: none !important;
   background-color: var(--agriox-base, #f39200);
-  color: var(--agriox-primary, #3aa935);
+  color: var(#FFFFFF, #F0FFFF);
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -4005,9 +4005,12 @@ button {
   line-height: 0;
   z-index: 5;
 }
-
+.blog-one__single-img .date-box:hover{
+  background-color: var(--agriox-primary, #334b35);
+  color: #fff;
+}
 .blog-one__single-img .date-box span {
-  color: var(--agriox-primary, #334b35);
+  color: #F4F7FA;
   font-size: 12px;
   line-height: 22px;
   font-weight: 700;
