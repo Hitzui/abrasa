@@ -6323,7 +6323,7 @@ button {
   height: 100%;
   width: 100%;
   content: "";
-  background-color: var(--agriox-primary, #3A8B35);
+  background-color: rgba(var(--agriox-primary-rgb, 51, 75, 53), 0.5);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   -webkit-transform: scaleY(0);
