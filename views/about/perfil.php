@@ -220,7 +220,7 @@ try {
         </div>
     </div>
     <hr>
-    <section class="bar no-mb rounded border container" data-aos="fade-right" style="margin: 0px !important;">
+    <section class="bar no-mb rounded border container" data-aos="fade-right" style="margin: auto !important;">
         <div class="container">
             <div class="row showcase text-center">
                 <div class="col-md-4 col-sm-6">
