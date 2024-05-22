@@ -617,7 +617,7 @@ endforeach;
                             ?>
                             <div class="blog-one__single">
                                 <div class="blog-one__single-img">
-                                    <img src="<?= $item->imagen ?>" alt="Abrasa" style="height: 225px"/>
+                                    <img src="<?= Url::home(true).'/'. $item->imagen ?>" alt="Abrasa" style="height: 225px"/>
                                     <div class="date-box">
                                         <span><?= $item->fecha ?></span>
                                     </div>
