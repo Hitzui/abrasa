@@ -23,7 +23,7 @@
   --agriox-base: #f39200;
   --agriox-base-rgb: 241, 207, 105;
   --agriox-primary: #3aa935;
-  --agriox-primary-rgb: 51, 75, 53;
+  --agriox-primary-rgb: 58, 169, 53;
   --agriox-secondary: #6d8c54;
   --agriox-secondary-rgb: 109, 140, 84;
   --agriox-color-1: #687469;
@@ -6299,7 +6299,6 @@ button {
   margin-bottom: 30px;
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease;
   transition: transform 500ms ease, -webkit-transform 500ms ease;
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
@@ -6324,7 +6323,7 @@ button {
   height: 100%;
   width: 100%;
   content: "";
-  background-color: rgba(var(--agriox-primary-rgb, 51, 75, 53), 0.5);
+  background-color: var(--agriox-primary, #3A8B35);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   -webkit-transform: scaleY(0);
