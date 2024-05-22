@@ -398,7 +398,7 @@ p.lead {
 .icon-outlined img{
   position: absolute;
   top: 50%;
-  transform: translate(-45%,-50%);
+  transform: translate(-50%,-50%);
   width: 125px;
   height: 125px;
 }

@@ -28,6 +28,10 @@
   --agriox-secondary-rgb: 109, 140, 84;
   --agriox-color-1: #687469;
   --agriox-color-1-rgb: 104, 116, 105;
+  --agriox-black: #262626;
+  --agriox-border:#FF7F11;
+  --agriox-gray:#a1a6a2;
+  --agriox-text-dark:#37403a;
 }
 
 .row {
@@ -5266,7 +5270,7 @@ button {
 
 .features-three__image__caption h3 {
   margin: 0;
-  color: var(--agriox-primary, #334b35);
+  color: var(#FBFFFF, #F5F8FE);
   font-size: 24px;
   line-height: 34px;
   font-weight: normal;
