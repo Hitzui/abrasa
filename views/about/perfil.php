@@ -227,7 +227,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-align-justify"></em>-->
-                            <img src="<?= Url::base(true) ?>/assets/images/resources/personas.png"
+                            <img src="<?= Url::base(true) ?>/assets/images/resources/clientes.png"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">1600</span><br>Clientes</h4>
@@ -237,7 +237,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-users"></em>-->
-                            <img src="<?= Url::base(true) ?>/assets/images/resources/vendedor-telefonico.png"
+                            <img src="<?= Url::base(true) ?>/assets/images/resources/vendedor.png"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">30</span><br>Vendedores</h4>
