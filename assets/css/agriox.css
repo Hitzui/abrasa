@@ -5269,13 +5269,12 @@ button {
 }
 
 .features-three__image__caption h3 {
-  margin: 0;
-  color: var(#FBFFFF, #F5F8FE);
+  color: #F5F8FE;
   font-size: 24px;
   line-height: 34px;
   font-weight: normal;
-  font-family: var(--agriox-font-3, "Shadows Into Light", cursive);
-  margin-top: 6px;
+  font-family: var(--agriox-font-3, "Shadows Into Light", cursive), serif;
+  margin: 6px 0 0;
 }
 
 @media (min-width: 992px) {
