@@ -108,6 +108,7 @@ try {
             <div class="col-xl-6">
                 <div class="features-three__image clearfix">
                     <img class="img-fluid"
+                         height="600px"
                          src="<?=Url::base(true)?>/assets/images/resources/quienes_somos_01.jpg"
                          alt="">
                     <div class="features-three__image__caption">
