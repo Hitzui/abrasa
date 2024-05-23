@@ -107,7 +107,9 @@ try {
         <div class="row">
             <div class="col-xl-6">
                 <div class="features-three__image clearfix">
-                    <img src="<?=Url::base(true)?>/assets/images/resources/quienes_somos_01.jpg" alt="">
+                    <img class="img-fluid"
+                         src="<?=Url::base(true)?>/assets/images/resources/quienes_somos_01.jpg"
+                         alt="">
                     <div class="features-three__image__caption">
                         <i class="icon-growth"></i>
                         <h3>Líderes profesionales en Agricultura</h3>
