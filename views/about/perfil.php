@@ -107,7 +107,7 @@ try {
         <div class="row">
             <div class="col-xl-6">
                 <div class="features-three__image clearfix">
-                    <img src="<?=Url::base(true)?>/assets/images/resources/features-3-1-1.jpg" alt="">
+                    <img src="<?=Url::base(true)?>/assets/images/resources/quienes_somos_01.jpg" alt="">
                     <div class="features-three__image__caption">
                         <i class="icon-growth"></i>
                         <h3>Líderes profesionales en Agricultura</h3>
@@ -118,7 +118,7 @@ try {
                 <div class="features-three__content">
                     <div class="sec-title text-left">
                         <div class="icon">
-                            <img src="assets/images/resources/sec-title-icon1.png" alt="">
+                            <img src="<?= Url::base(true)?>/assets/images/resources/sec-title-icon1.png" alt="">
                         </div>
                         <span class="sec-title__tagline">Beneficios que ofrecemos</span>
                         <h2 class="sec-title__title">
