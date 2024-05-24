@@ -262,26 +262,6 @@ try {
 }
 ?>
 
-<!-- Background video -->
-<!--<div class="video-background-holder">
-    <div class="video-background-overlay"></div>
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="<?php /*= $slide->ruta */ ?>" type="video/mp4">
-    </video>
-    <div class="video-background-content container h-100">
-        <div class="d-flex h-100 text-center align-items-center">
-            <div class="w-100 text-white">
-                <h1 class="display-4 animate__animated animate__fadeInRight"><?php /*= $slide->titulo */ ?></h1>
-                <p class="lead mb-0 animate__animated animate__fadeInLeft"><?php /*= $slide->descripcion */ ?></p>
-                <p class="lead">
-                    <a href="<?php /*=Url::to('about/perfil')*/ ?>" class="btn btn-primary text-white">
-                        <u>Ver más sobre nosotros</u>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>-->
 <!-- Carousel wrapper -->
 <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
     <!-- Indicators -->
