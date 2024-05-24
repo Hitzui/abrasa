@@ -326,7 +326,10 @@ try {
                         </video>
                     </div>
                     <?php
-                } else {
+                }if(strpos($item->ruta, 'youtube')){
+                    echo '<iframe width="560" height="315" src="'.$item->ruta .'"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                }
+                else {
                     ?>
                     <img src="<?= $item->ruta ?>" class="d-block w-100" style="max-height: 720px"
                          alt="<?= $item->titulo ?>"/>
