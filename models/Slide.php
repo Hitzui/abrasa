@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * @property string $ruta
  * @property string $titulo
  * @property string $descripcion
+ * @property int $video
  */
 class Slide extends ActiveRecord
 {
@@ -39,6 +40,7 @@ class Slide extends ActiveRecord
             [['imageFiles'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg,mp4', 'maxFiles' => 1],
             [['titulo','descripcion'], 'string'],
             [['ruta'], 'string'],
+            [['video'], 'integer'],
         ];
     }
 

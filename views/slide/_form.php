@@ -35,6 +35,7 @@ use yii\helpers\Html;
                     echo '<div class="alert alert-danger">'.$e->getMessage().'</div>';
                 } ?>
                 <?= $form->field($model, 'ruta') ?>
+                <?= $form->field($model, 'video')?>
                 <div class="form-group">
                     <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
                 </div>

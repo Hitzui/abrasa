@@ -18,6 +18,23 @@ $this->title = 'Agropecuaria Bravo, S.A. - ABRASA';
 /** @var Categoria $categorias */
 /** @var Slide $slide */
 $css = <<<CSS
+.video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 68%;
+            border: 0;
+        }
 .efecto img {
   --s: 15px;  /* size of the frame */
   --b: 2px;   /* border thickness */
@@ -293,21 +310,25 @@ try {
             <!-- Single item -->
             <div class="carousel-item <?= ($i === 0) ? 'active' : '' ?>">
                 <?php
-                if (strcmp($info->getExtension(), 'mp4') == 0) { ?>
-                    <div class="" style="max-height: 720px">
-                        <video style="
-                                height: auto;
-                                width: 100%;
-                                margin: 0 auto;
-                                background: url(<?= Url::base(true) ?>/assets/images/backgrounds/video-one-bg.jpg) no-repeat;
-                                background-size: cover;
-                                overflow: hidden;" autoplay loop muted>
-                            <source class="h-100" src="<?= $item->ruta ?>" type="video/mp4"/>
-                        </video>
-                    </div>
-                    <?php
-                }elseif(strpos($item->ruta, 'youtube') !== false){
-                    echo '<iframe width="560" height="315" src="'.$item->ruta .'"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                if ($item->video){
+                    if (strcmp($info->getExtension(), 'mp4') == 0) { ?>
+                        <div class="" style="max-height: 720px">
+                            <video style="
+                                    height: auto;
+                                    width: 100%;
+                                    margin: 0 auto;
+                                    background: url(<?= Url::base(true) ?>/assets/images/backgrounds/video-one-bg.jpg) no-repeat;
+                                    background-size: cover;
+                                    overflow: hidden;" autoplay loop muted>
+                                <source class="h-100" src="<?= $item->ruta ?>" type="video/mp4"/>
+                            </video>
+                        </div>
+                        <?php
+                    }else if(strpos($item->ruta, 'http')!==false){
+                        echo '<div class="video-container">';
+                        echo '<iframe src="'.$item->ruta .'"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                        echo '</div>';
+                    }
                 }
                 else {
                     ?>

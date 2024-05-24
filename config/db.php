@@ -6,7 +6,7 @@ return [
     'username' => 'adminabrasa',
     'password' => '2ugU465y!',
     'charset' => 'utf8',
-    /*'username' => 'root',
+/*    'username' => 'root',
     'password' => 'admin',*/
 
     // Schema cache options (for production environment)
