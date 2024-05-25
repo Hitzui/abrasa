@@ -2,6 +2,7 @@
 
 use kartik\file\FileInput;
 use kartik\form\ActiveForm;
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -35,7 +36,11 @@ use yii\helpers\Html;
                     echo '<div class="alert alert-danger">'.$e->getMessage().'</div>';
                 } ?>
                 <?= $form->field($model, 'ruta') ?>
-                <?= $form->field($model, 'video')?>
+                <?php try {
+                    echo $form->field($model, 'video')->checkbox();
+                } catch (InvalidConfigException $e) {
+                    echo $e->getMessage();
+                } ?>
                 <div class="form-group">
                     <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
                 </div>

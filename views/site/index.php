@@ -21,7 +21,7 @@ $css = <<<CSS
 .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 ratio */
-            height: 0;
+            height: 100%;
             overflow: hidden;
             max-width: 100%;
             background: #000;
@@ -310,7 +310,7 @@ try {
             <!-- Single item -->
             <div class="carousel-item <?= ($i === 0) ? 'active' : '' ?>">
                 <?php
-                if ($item->video){
+                if ($item->video) {
                     if (strcmp($info->getExtension(), 'mp4') == 0) { ?>
                         <div class="" style="max-height: 720px">
                             <video style="
@@ -324,13 +324,12 @@ try {
                             </video>
                         </div>
                         <?php
-                    }else if(strpos($item->ruta, 'http')!==false){
+                    } else if (strpos($item->ruta, 'http') !== false) {
                         echo '<div class="video-container">';
-                        echo '<iframe src="'.$item->ruta .'"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                        echo '<iframe src="' . $item->ruta . '"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                         echo '</div>';
                     }
-                }
-                else {
+                } else {
                     ?>
                     <img src="<?= $item->ruta ?>" class="d-block w-100" style="max-height: 720px"
                          alt="<?= $item->titulo ?>"/>
@@ -621,14 +620,15 @@ endforeach;
                             ?>
                             <div class="blog-one__single">
                                 <div class="blog-one__single-img">
-                                    <img src="<?= Url::home(true) . $item->imagen ?>" alt="Abrasa" style="height: 225px"/>
+                                    <img src="<?= Url::home(true) . $item->imagen ?>" alt="Abrasa"
+                                         style="height: 225px"/>
                                     <div class="date-box">
                                         <span><?= $item->fecha ?></span>
                                     </div>
                                     <div class="overlay-icon">
                                         <a href="<?= Url::to(['noticias/find', 'id' => $item->idnoticias]) ?>">
                                             <span class="icon-eye"></span>
-                                        .</a>
+                                            .</a>
                                     </div>
                                 </div>
 
