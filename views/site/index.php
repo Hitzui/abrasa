@@ -337,7 +337,7 @@ try {
                 }
                 ?>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3><?= $item->titulo ?></h3>
+                    <h1 style="color: white"><b><?= $item->titulo ?></b></h1>
                     <p><?= $item->descripcion ?></p>
                 </div>
             </div>
