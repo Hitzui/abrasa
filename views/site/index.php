@@ -326,7 +326,7 @@ try {
                         <?php
                     } else if (strpos($item->ruta, 'http') !== false) {
                         echo '<div class="video-container">';
-                        echo '<iframe src="' . $item->ruta . '"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                        echo '<iframe src="' . $item->ruta . '?autoplay=1&mute=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                         echo '</div>';
                     }
                 } else {
