@@ -13,25 +13,41 @@ use yii\web\View;
 use yii\helpers\Url;
 
 $this->title = "ABRASA - Quienes Somsos";
+$baseUrl = Url::base(true);
 try {
-    $this->registerCssFile(Url::base(true) . '/assets/vendor/icofont/icofont.min.css');
-    $this->registerCssFile(Url::base(true) . '/assets/vendor/icomoon-icons/style.css');
-    $this->registerCssFile(Url::base(true) . '/assets/vendor/boxicons/css/boxicons.min.css');
-    $this->registerCssFile(Url::base(true) . '/assets/vendor/owl.carousel/assets/owl.carousel.min.css');
-    $this->registerCssFile(Url::base(true) . '/assets/vendor/venobox/venobox.css');
-    $this->registerCssFile(Url::base(true) . '/assets/css/style.css');
+    $this->registerCssFile($baseUrl . '/assets/vendor/icofont/icofont.min.css');
+    $this->registerCssFile($baseUrl . '/assets/vendor/icomoon-icons/style.css');
+    $this->registerCssFile($baseUrl . '/assets/vendor/boxicons/css/boxicons.min.css');
+    $this->registerCssFile($baseUrl . '/assets/vendor/owl.carousel/assets/owl.carousel.min.css');
+    $this->registerCssFile($baseUrl . '/assets/vendor/venobox/venobox.css');
+    $this->registerCssFile($baseUrl . '/assets/css/style.css');
     $this->registerCssFile('https://unpkg.com/swiper@7/swiper-bundle.min.css');
-    $this->registerCssFile(Url::base(true) . '/assets/css/perfil.css');
-    $this->registerJsFile(Url::base(true) . '/assets/js/glightbox.js', ['depends' => [JqueryAsset::class]]);
+    $this->registerCssFile($baseUrl . '/assets/css/perfil.css');
+    $this->registerJsFile($baseUrl . '/assets/js/glightbox.js', ['depends' => [JqueryAsset::class]]);
     $this->registerJsFile('https://unpkg.com/swiper@7/swiper-bundle.min.js');
-    $this->registerJsFile(Url::base(true) . '/assets/vendor/jquery.easing/jquery.easing.min.js', ['depends' => [AssetBundle::class]]);
-    $this->registerJsFile(Url::base(true) . '/assets/vendor/venobox/venobox.min.js', ['depends' => [AssetBundle::class]]);
-    $this->registerJsFile(Url::base(true) . '/assets/vendor/isotope-layout/isotope.pkgd.min.js', ['depends' => [AssetBundle::class]]);
-    $this->registerJsFile(Url::base(true) . '/assets/js/main.js', ['depends' => [AssetBundle::class]]);
-    $this->registerJsFile(Url::base(true) . '/assets/js/perfil.js', ['depends' => [AssetBundle::class]]);
-    $this->registerCssFile(Url::base(true) . '/assets/css/mdb.min.css', ['depends' => [BootstrapAsset::class]]);
-    $this->registerJsFile(Url::base(true) . '/assets/vendor/bootstrap/js/bootstrap.bundle.js', ['depends' => [BootstrapAsset::class]]);
-    $this->registerJsFile(Url::base(true) . '/assets/js/mdb.min.js', ['depends' => [BootstrapAsset::class]]);
+    $this->registerJsFile($baseUrl . '/assets/vendor/jquery.easing/jquery.easing.min.js', ['depends' => [AssetBundle::class]]);
+    $this->registerJsFile($baseUrl . '/assets/vendor/venobox/venobox.min.js', ['depends' => [AssetBundle::class]]);
+    $this->registerJsFile($baseUrl . '/assets/vendor/isotope-layout/isotope.pkgd.min.js', ['depends' => [AssetBundle::class]]);
+    $this->registerJsFile($baseUrl . '/assets/js/main.js', ['depends' => [AssetBundle::class]]);
+    $this->registerJsFile($baseUrl . '/assets/js/perfil.js', ['depends' => [AssetBundle::class]]);
+    $this->registerCssFile($baseUrl . '/assets/css/mdb.min.css', ['depends' => [BootstrapAsset::class]]);
+    $this->registerJsFile($baseUrl . '/assets/vendor/bootstrap/js/bootstrap.bundle.js', ['depends' => [BootstrapAsset::class]]);
+    $this->registerJsFile($baseUrl . '/assets/js/mdb.min.js', ['depends' => [BootstrapAsset::class]]);
+
+    $js = <<<JS
+        $('#tab-mision').click(function(e){
+            $('#mv_img').fadeOut('fast', function () {
+              $(this).attr('src', "$baseUrl/assets/images/resources/quienes_somos_01.jpg").fadeIn('fast');
+            });
+        });
+        $('#tab-vision').click(function(e){
+             $('#mv_img').fadeOut('fast', function () {
+              $(this).attr('src', "$baseUrl/assets/images/resources/quienes_somos_02.jpg").fadeIn('fast');
+            });
+        });
+     JS;
+
+    $this->registerJs($js);
 } catch (InvalidConfigException $e) {
     echo $e->getMessage();
 }
@@ -52,12 +68,12 @@ try {
             <div class="col-lg-3">
                 <ul class="nav nav-tabs flex-column">
                     <li class="nav-item">
-                        <a class="nav-link show active" data-bs-toggle="tab" href="#tab-1" style="font-size: 20px;">
+                        <a class="nav-link show active" data-bs-toggle="tab" href="#tab-1" style="font-size: 20px;" id="tab-mision">
                             Misi&oacute;n
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tab-2" style="font-size: 20px;">
+                        <a class="nav-link" data-bs-toggle="tab" href="#tab-2" style="font-size: 20px;" id="tab-vision">
                             Visi&oacute;n
                         </a>
                     </li>
@@ -109,7 +125,8 @@ try {
                 <div class="features-three__image clearfix">
                     <img class="img-fluid"
                          style="height: 600px"
-                         src="<?=Url::base(true)?>/assets/images/resources/quienes_somos_01.jpg"
+                         id="mv_img"
+                         src="<?= $baseUrl ?>/assets/images/resources/quienes_somos_01.jpg"
                          alt="">
                     <div class="features-three__image__caption">
                         <i class="icon-growth"></i>
@@ -121,7 +138,7 @@ try {
                 <div class="features-three__content">
                     <div class="sec-title text-left">
                         <div class="icon">
-                            <img src="<?= Url::base(true)?>/assets/images/resources/sec-title-icon1.png" alt="">
+                            <img src="<?= $baseUrl ?>/assets/images/resources/sec-title-icon1.png" alt="">
                         </div>
                         <span class="sec-title__tagline">Beneficios que ofrecemos</span>
                         <h2 class="sec-title__title">
@@ -230,7 +247,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-align-justify"></em>-->
-                            <img src="<?= Url::base(true) ?>/assets/images/resources/clientes.png"
+                            <img src="<?= $baseUrl ?>/assets/images/resources/clientes.png"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">1600</span><br>Clientes</h4>
@@ -240,7 +257,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-users"></em>-->
-                            <img src="<?= Url::base(true) ?>/assets/images/resources/vendedor.png"
+                            <img src="<?= $baseUrl ?>/assets/images/resources/vendedor.png"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">30</span><br>Vendedores</h4>
@@ -250,7 +267,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-copy"></em>-->
-                            <img src="<?= Url::base(true) ?>/assets/images/resources/imagen-de-marca.png"
+                            <img src="<?= $baseUrl ?>/assets/images/resources/imagen-de-marca.png"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">32</span><br>Marcas Representadas</h4>
