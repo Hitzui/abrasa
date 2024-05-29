@@ -43,10 +43,10 @@ $rows = Noticias::find()
                                 <!--thumbnail-->
                                 <div class="ratio_110-77 image-wrapper">
                                     <a href="<?= Url::to(['noticias/find', 'id' => $noticia->idnoticias]) ?>">
-                                        <img width="110" height="77" src="<?= $noticia->imagen ?>"
+                                        <img width="110" height="77" src="<?= Url::base(true).'/'.$noticia->imagen ?>"
                                              class="img-fluid lazy wp-post-image loaded"
                                              alt="Abrasa noticia" loading="lazy"
-                                             data-src="<?= $noticia->imagen ?>"
+                                             data-src="<?= Url::base(true).'/'.$noticia->imagen ?>"
                                              sizes="(max-width: 110px) 100vw, 110px"
                                              data-was-processed="true">
                                         <!-- post type -->

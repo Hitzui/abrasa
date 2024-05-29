@@ -52,16 +52,6 @@ try {
                                             </h2>
                                         </div>
                                     </div>
-
-                                    <!--<div class="card mb-3 caja" data-aos="fade-left">
-                                        <img src="<?php /*= $cat->imagen */?>" class="card-img-top" alt="Wild Landscape"/>
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center"> <?php /*= $cat->descripcion */?></h5>
-                                            <p class="card-text">
-                                                <?php /*= Html::a('Ver más', ['noticias/categoria', 'id' => $cat->idcatnoticias], ['class' => 'btn btn-info']) */?>
-                                            </p>
-                                        </div>
-                                    </div>-->
                                 </div>
                             <?php } ?>
                         </div>
