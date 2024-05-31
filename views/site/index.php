@@ -331,7 +331,7 @@ try {
                     }
                 } else {
                     ?>
-                    <img src="<?= $item->ruta ?>" class="d-block w-100" style="max-height: 720px"
+                    <img src="<?= $item->ruta ?>" class="d-block w-100"
                          alt="<?= $item->titulo ?>"/>
                     <?php
                 }
