@@ -19,12 +19,11 @@ $this->title = 'Agropecuaria Bravo, S.A. - ABRASA';
 /** @var Slide $slide */
 $css = <<<CSS
 .video-container {
-            /*position: relative;
-            padding-bottom: 56.25%;*/ /* 16:9 ratio */
-            height: 750px;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
+            width: 80%; /* Ajusta el ancho del contenedor según tus necesidades */
+            max-width: 1200px; /* Ancho máximo opcional */
+            aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto 16:9 */
+            background-color: black; /* Fondo opcional para cuando no haya video */
+            position: relative; /* Necesario para el posicionamiento del iframe */
         }
 
         .video-container iframe {
