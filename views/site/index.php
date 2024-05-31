@@ -280,7 +280,7 @@ try {
 ?>
 
 <!-- Carousel wrapper -->
-<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
+<div style="max-height: 750px" id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
     <!-- Indicators -->
     <div class="carousel-indicators">
         <?php
