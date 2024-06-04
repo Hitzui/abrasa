@@ -357,26 +357,6 @@ try {
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<!-- Carousel wrapper -->
-<!--<section id="image-carousel" class="splide" aria-label="Beautiful Images">
-    <div class="splide__track">
-        <ul class="splide__list">-->
-<?php
-foreach ($slide as $item):
-    /* @var $item Slide */
-    ?>
-    <!--<li class="splide__slide">
-                    <img src="<?php /*= $item->ruta */
-    ?>" alt="<?php /*= $item->descripcion */
-    ?>">
-                </li>-->
-<?php
-endforeach;
-?>
-<!--</ul>
-</div>
-</section>-->
-<!-- End -->
 <section
         class="bar no-mb text-center bg-fixed relative-positioned animate animate__fadeInLeft"
         data-aos="fade-up">
@@ -526,60 +506,6 @@ endforeach;
     </div>
 </section>
 <!--Section de blog o noticias-->
-<!--<div style="max-width: 85%; margin:0 auto">
-    <div class="row">
-        <div class="col-3">
-            <div class="card">
-                <div class="card-body">
-                    <img class="img-fluid" alt="Abrasa"
-                         src="https://abrasa.com.ni/assets/img/logo.png">
-                    <h1 class="card-title text-primary sec-title">Ultimas noticias</h1>
-                    <p class="card-text">
-                        Comprometidos con nuestros clientes, innovamos cada día en facilitar la labor, innovando en
-                        tecnologia.
-                    </p>
-
-                </div>
-
-            </div>
-        </div>
-        <div class="col-9">
-            <section id="image-carousel" class="splide" aria-label="Beautiful Images">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php
-/* @var $noticias array */
-/*foreach ($noticias as $key => $item) {
-    /* @var $item Noticias */
-?>
-                            <li class="splide__slide">
-                                <div class="card efecto" style="margin: 10px">
-                                    <img alt="Abrasa" src="<?php /*= $item->imagen */ ?>" height="250"
-                                         style="--c: #668284;--b:1px;--s: 18px">
-                                    <div class="card-body">
-                                        <a href="<?php /*= Url::to(['noticias/find', 'id' => $item->idnoticias]) */ ?>"
-                                           style="display: -webkit-box;
-                                            -webkit-line-clamp: 3;
-                                            -webkit-box-orient: vertical;
-                                            max-width: 300px;
-                                            overflow: hidden;
-                                            text-overflow: ellipsis;
-                                            height:65px;">
-                                            <?php /*= $item->titulo */ ?>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <?php
-/*                        }
-                        */ ?>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
-</div>-->
-<!--Blog Two Start-->
 <section class="blog-two">
     <div class="" style="max-width: 85%; margin:0 auto">
         <div class="row">

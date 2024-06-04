@@ -57,7 +57,7 @@ $this->registerCss($css);
 if (empty($find->rutaimg) || strlen($find->rutaimg) <= 5) {
     $find->rutaimg = 'uploads/logo.png';
 }
-$this->registerCssFile(Url::base(true) . '/assets/css/splide.min.css', [
+$this->registerCssFile('https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', [
     'depends' => [AppAsset::class],
 ]);
 
@@ -66,7 +66,7 @@ $this->registerJsFile(
     ['depends' => [AppAsset::class]]
 );
 $this->registerJsFile(
-    Url::base(true) . '/admin/vendor/bootstrap/js/bootstrap.bundle.js',
+    'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js',
     ['depends' => [AppAsset::class]]
 );
 $js = <<<JS
@@ -101,7 +101,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 } );
 JS;
 
-$this->registerJs($js, View::POS_END);
+$this->registerJs($js, View::POS_HEAD);
 
 if ($familias !== null) {
     $linkFamilias = "";
