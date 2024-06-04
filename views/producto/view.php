@@ -179,7 +179,7 @@ if ($familias !== null) {
                                     foreach ($presentaciones as $value):
                                         ?>
                                         <li class="splide__slide">
-                                            <img src="<?= Url::base(true).'/'. $value->ruta ?>"
+                                            <img src="<?= $value->ruta ?>"
                                                  alt="" style="max-height: 60px"
                                                  class="img-fluid img-thumbnail">
                                         </li>
