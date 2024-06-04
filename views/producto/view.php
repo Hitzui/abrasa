@@ -178,8 +178,8 @@ if ($familias !== null) {
                                     foreach ($presentaciones as $value):
                                         ?>
                                         <li class="splide__slide">
-                                            <img src="<?=  $value->ruta ?>" alt=""
-                                                 class="img-fluid">
+                                            <img src="<?=  $value->ruta ?>" alt="" style="max-height: 60px"
+                                                 class="img-fluid img-thumbnail">
                                         </li>
                                     <?php
                                     endforeach;
