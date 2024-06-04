@@ -171,7 +171,7 @@ if ($familias !== null) {
                                 <ul class="splide__list">
                                     <li class="splide__slide">
                                         <img src="<?= Url::base(true).'/'. $find->rutaimg ?>"
-                                             alt="<?= $find->descripcion ?>"
+                                             alt="<?= $find->descripcion ?>" style="max-height: 60px"
                                              class="img-fluid"/>
                                     </li>
                                     <?php
