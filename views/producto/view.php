@@ -141,8 +141,8 @@ if ($familias !== null) {
                                            data-caption="<?= $find->descripcion ?>"
                                            data-gallery="view-gallery">
                                             <img src="<?= Url::base(true).'/' . $find->rutaimg ?>"
-                                                 alt="<?= $find->descripcion ?>" height="250px"
-                                                 class="img-thumbnail rounded"/>
+                                                 alt="<?= $find->descripcion ?>"
+                                                 class="img-fluid img-thumbnail rounded"/>
                                         </a>
                                     </li>
                                     <?php
@@ -151,7 +151,7 @@ if ($familias !== null) {
                                         <li class="splide__slide">
                                             <a href="<?= $value->ruta ?>" data-toggle="lightbox"
                                                data-caption="<?= $value->descripcion ?>" data-gallery="view-gallery">
-                                                <img src="<?= $value->ruta ?>" alt=""
+                                                <img src="<?= $value->ruta ?>" alt="<?= $value->descripcion ?>" height="250px"
                                                      class="img-fluid img-thumbnail rounded"/>
                                             </a>
                                         </li>
