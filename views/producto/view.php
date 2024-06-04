@@ -151,8 +151,8 @@ if ($familias !== null) {
                                         <li class="splide__slide">
                                             <a href="<?= $value->ruta ?>" data-toggle="lightbox"
                                                data-caption="<?= $value->descripcion ?>" data-gallery="view-gallery">
-                                                <img src="<?= $value->ruta ?>" alt="<?= $value->descripcion ?>" height="250px"
-                                                     class="img-fluid img-thumbnail rounded"/>
+                                                <img src="<?= $value->ruta ?>" alt="<?= $value->descripcion ?>" height="250"
+                                                     class="img-thumbnail rounded"/>
                                             </a>
                                         </li>
                                     <?php
