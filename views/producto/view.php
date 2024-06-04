@@ -171,13 +171,15 @@ if ($familias !== null) {
                                 <ul class="splide__list">
                                     <li class="splide__slide">
                                         <img src="<?= Url::base(true).'/'. $find->rutaimg ?>"
-                                             alt="<?= $find->descripcion ?>"/>
+                                             alt="<?= $find->descripcion ?>"
+                                             style="max-height: 60px"/>
                                     </li>
                                     <?php
                                     foreach ($presentaciones as $value):
                                         ?>
                                         <li class="splide__slide">
-                                            <img src="<?= $value->ruta ?>">
+                                            <img src="<?= $value->ruta ?>"
+                                                 alt="" style="max-height: 60px" />
                                         </li>
                                     <?php
                                     endforeach;
