@@ -141,7 +141,7 @@ if ($familias !== null) {
                                            data-caption="<?= $find->descripcion ?>"
                                            data-gallery="view-gallery">
                                             <img src="<?= Url::base(true).'/' . $find->rutaimg ?>"
-                                                 alt="<?= $find->descripcion ?>"
+                                                 alt="<?= $find->descripcion ?>" style="max-height: 350px"
                                                  class="img-fluid img-thumbnail rounded"/>
                                         </a>
                                     </li>
@@ -152,7 +152,7 @@ if ($familias !== null) {
                                             <a href="<?= $value->ruta ?>" data-toggle="lightbox"
                                                data-caption="<?= $value->descripcion ?>" data-gallery="view-gallery">
                                                 <img src="<?= $value->ruta ?>" alt="<?= $value->descripcion ?>"
-                                                     class="img-fluid rounded" style="max-height: 300px" />
+                                                     class="img-fluid rounded" style="max-height: 350px" />
                                             </a>
                                         </li>
                                     <?php
