@@ -62,11 +62,11 @@ $this->registerCssFile('https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist
 ]);
 
 $this->registerJsFile(
-    Url::base(true) . '/assets/js/splide.js',
+    'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js',
     ['depends' => [AppAsset::class]]
 );
 $this->registerJsFile(
-    'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js',
+    Url::base(true) . '/admin/vendor/bootstrap/js/bootstrap.bundle.js',
     ['depends' => [AppAsset::class]]
 );
 $js = <<<JS
@@ -101,7 +101,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 } );
 JS;
 
-$this->registerJs($js, View::POS_HEAD);
+$this->registerJs($js, View::POS_END);
 
 if ($familias !== null) {
     $linkFamilias = "";
@@ -141,8 +141,8 @@ if ($familias !== null) {
                                            data-caption="<?= $find->descripcion ?>"
                                            data-gallery="view-gallery">
                                             <img src="<?= Url::base(true).'/' . $find->rutaimg ?>"
-                                                 alt="<?= $find->descripcion ?>"
-                                                 class="img-fluid img-thumbnail rounded img-producto"/>
+                                                 alt="<?= $find->descripcion ?>" height="250px"
+                                                 class="img-thumbnail rounded"/>
                                         </a>
                                     </li>
                                     <?php
