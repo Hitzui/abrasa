@@ -52,7 +52,7 @@ $css = <<<CSS
 .bg-success{
 background-color: #023C2C !important;
 }
-.splide__slide img{
+#main-carousel .splide__slide img{
 max-height: 60px !important;
 }
 CSS;
