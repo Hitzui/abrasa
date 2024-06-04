@@ -142,7 +142,7 @@ if ($familias !== null) {
                                            data-gallery="view-gallery">
                                             <img src="<?= Url::base(true).'/' . $find->rutaimg ?>"
                                                  alt="<?= $find->descripcion ?>"
-                                                 class="img-fluid img-thumbnail rounded"/>
+                                                 class="img-fluid img-thumbnail rounded img-producto"/>
                                         </a>
                                     </li>
                                     <?php
