@@ -52,6 +52,9 @@ $css = <<<CSS
 .bg-success{
 background-color: #023C2C !important;
 }
+.splide__slide img{
+max-height: 60px !important;
+}
 CSS;
 $this->registerCss($css);
 if (empty($find->rutaimg) || strlen($find->rutaimg) <= 5) {
@@ -171,14 +174,16 @@ if ($familias !== null) {
                                 <ul class="splide__list">
                                     <li class="splide__slide">
                                         <img src="<?= Url::base(true).'/'. $find->rutaimg ?>"
-                                             alt="<?= $find->descripcion ?>" style="max-height: 60px"
+                                             alt="<?= $find->descripcion ?>"
+                                             style="max-height: 60px"
                                              class="img-fluid"/>
                                     </li>
                                     <?php
                                     foreach ($presentaciones as $value):
                                         ?>
                                         <li class="splide__slide">
-                                            <img src="<?=  $value->ruta ?>" alt="" style="max-height: 60px"
+                                            <img src="<?= Url::base(true).'/'. $value->ruta ?>"
+                                                 alt="" style="max-height: 60px"
                                                  class="img-fluid img-thumbnail">
                                         </li>
                                     <?php
