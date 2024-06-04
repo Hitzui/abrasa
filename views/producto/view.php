@@ -148,11 +148,11 @@ if ($familias !== null) {
                                     <?php
                                     foreach ($presentaciones as $value):
                                         ?>
-                                        <li class="splide__slide">
+                                        <li class="splide__slide" style="max-height: 300px">
                                             <a href="<?= $value->ruta ?>" data-toggle="lightbox"
                                                data-caption="<?= $value->descripcion ?>" data-gallery="view-gallery">
-                                                <img src="<?= $value->ruta ?>" alt="<?= $value->descripcion ?>" height="250"
-                                                     class="img-thumbnail rounded"/>
+                                                <img src="<?= $value->ruta ?>" alt="<?= $value->descripcion ?>"
+                                                     class="img-fluid rounded"/>
                                             </a>
                                         </li>
                                     <?php
