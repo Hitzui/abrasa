@@ -247,7 +247,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-align-justify"></em>-->
-                            <img src="<?= $baseUrl ?>/assets/images/resources/clientes.png"
+                            <img src="<?= $baseUrl ?>/assets/images/resources/clientes_about.jpg"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">1600</span><br>Clientes</h4>
@@ -257,7 +257,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-users"></em>-->
-                            <img src="<?= $baseUrl ?>/assets/images/resources/vendedor.png"
+                            <img src="<?= $baseUrl ?>/assets/images/resources/vendedoes_about.jpg"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">30</span><br>Vendedores</h4>
@@ -267,7 +267,7 @@ try {
                     <div class="item text-white">
                         <div class="icon-outlined">
                             <!--<em class="fa fa-copy"></em>-->
-                            <img src="<?= $baseUrl ?>/assets/images/resources/imagen-de-marca.png"
+                            <img src="<?= $baseUrl ?>/assets/images/resources/marcas_representadas.jpg"
                                  alt="Abrasa" class="img-fluid" />
                         </div>
                         <h4>+<span class="h1 counter">32</span><br>Marcas Representadas</h4>
