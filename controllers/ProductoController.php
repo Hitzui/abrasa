@@ -342,6 +342,7 @@ class ProductoController extends Controller
         $query = Articulo::find()
             ->joinWith('subcategoria')
             ->leftJoin('categoria', 'subcategoria.idcategoria = categoria.idcategoria')
+            ->leftJoin("familia", "categoria.idfcategoria=familia.idcategoria")
             ->where(['categoria.idcategoria' => $id]);
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
