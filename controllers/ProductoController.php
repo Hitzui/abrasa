@@ -346,7 +346,7 @@ class ProductoController extends Controller
          where cat.idcategoria=22
          */
         $filter = FamiliaArticulo::find()
-            ->leftJoin('subcategoria','famili_articulo.idsubcategoria = subcategoria.idsubcategoria')
+            ->leftJoin('subcategoria','familia_articulo.idsubcategoria = subcategoria.idsubcategoria')
             ->leftJoin('categoria', 'subcategoria.idcategoria = categoria.idcategoria')
             ->where(['categoria.idcategoria' => $id])
             ->all();
