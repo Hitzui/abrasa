@@ -339,11 +339,18 @@ class ProductoController extends Controller
             ],
         ]);
         //$sort->defaultOrder=['descripcion'=>SORT_ASC];
-        $query = Articulo::find()
-            ->joinWith('subcategoria')
+        /*
+         select * from familia_articulo far
+         join subcategoria sub on far.idsubcategoria = sub.idsubcategoria
+         join categoria cat on sub.idcategoria=sub.idcategoria
+         where cat.idcategoria=22
+         */
+        $filter = FamiliaArticulo::find()
+            ->leftJoin('subcategoria','famili_articulo.idsubcategoria = subcategoria.idsubcategoria')
             ->leftJoin('categoria', 'subcategoria.idcategoria = categoria.idcategoria')
-            ->leftJoin("familia", "categoria.idcategoria=familia.idcategoria")
-            ->where(['categoria.idcategoria' => $id]);
+            ->where(['categoria.idcategoria' => $id])
+            ->all();
+        $query=Articulo::find()->where(['idarticulo' => $filter]);
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
         $pages->defaultPageSize = $this->pageSize;
