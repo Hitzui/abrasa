@@ -62,7 +62,7 @@ try {
                     ?>
                     <div class="col-md-3 col-sm-6">
                         <div class="card mb-3 caja">
-                            <img src="<?= $item->imagen ?>" class="card-img-top" alt="Wild Landscape"/>
+                            <img src="<?= $item->imagen ?>" class="card-img-top" alt="ABRASA"/>
                             <div class="card-body">
                                 <h5 class="card-title text-center"> <?= $item->nombre ?></h5>
                                 <p class="card-text">
