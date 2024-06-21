@@ -14,7 +14,7 @@ use yii\helpers\Url;
 use yii\web\View;
 
 AppAsset::register($this);
-$remember = Url::remember();
+//$remember = Url::remember();
 
 $url = Url::to();
 $urls = explode("/", $url);
@@ -39,6 +39,7 @@ $categorias = Categoria::find()->orderBy('nombre')->all();
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet"/>
