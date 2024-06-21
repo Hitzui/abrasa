@@ -201,7 +201,7 @@ try {
                                      class="shadow-sm"
                                      data-aos="fade-in">
                             </div>
-                            <div class="count-box"></div>
+<!-- Esto servia para contar: <div class="count-box"></div>-->
                         </div>
                         <div class="features-two__single-title">
                             <h3><a href="#"><?= $value->nombre ?></a></h3>
