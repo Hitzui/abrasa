@@ -1,8 +1,10 @@
 <?php
 
-use yii\helpers\Html;
 
 /** @var \app\models\Proveedor $proveedores */
+
+use yii\bootstrap5\Html;
+
 $this->title = "ABRASA - ARTICULOS POR PROVEEDOR";
 ?>
 <p>&nbsp;</p>
