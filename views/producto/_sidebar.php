@@ -48,7 +48,7 @@ Yii::$app->view->registerCss($css);
                 <h5 class="mb-0">
 <!-- Se ocultó la siguiente propiedad data-bs-toggle="collapse"-->
                     <a
-                       href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria])?>#collapse-<?= $categoria->idcategoria ?>"
+                       href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria])?>"
                        aria-expanded="true" aria-controls="collapse-<?= $categoria->idcategoria ?>"
                        class="text-white">
                         <?= $categoria->nombre ?>
