@@ -203,21 +203,21 @@ CSS;
 $js = <<<JS
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
-    spaceBetween: 10,    
+    spaceBetween: 0,    
     loop: true,
     loopFillGroupWithBlank: false,
     breakpoints: {
         640: {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 0,
         },
         768: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 0,
         },
         1024: {
             slidesPerView: 4,
-            spaceBetween: 50,
+            spaceBetween: 0,
         },
     },
     autoplay: {
@@ -357,6 +357,85 @@ try {
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<!--Inicio Categoria-->
+<section class="bar">
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading text-center">
+                    <h2>Categor&iacute;a de productos</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <?php
+            foreach ($categorias as $key => $categoria) {
+                ?>
+                <div class="col-md col-sm-12">
+                    <div class="box-simple animate__animated animate__bounce" data-aos="fade-right">
+                        <div class="hover hover-3 text-white rounded"
+                             style="background-color: <?= $categoria->color ?>">
+                            <img src="/<?= $categoria->imagen ?>" alt="<?= $categoria->nombre ?>" class="img-fluid"/>
+                            <div class="hover-overlay"></div>
+                            <div class="hover-3-content px-5 py-4 text-center">
+                                <h4 class="hover-3-title font-weight-bold mb-1">
+                                    <a href="<?= Url::to(['producto/categoria', 'id' => $categoria->idcategoria]) ?>"
+                                       class="text-white" style="margin-left: -10px">
+                                        <?= $categoria->nombre ?>
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                if ($key == 4) {
+                    echo '</div><div class="row justify-content-center">';
+                }
+            } ?>
+        </div>
+    </div>
+</section>
+<!--Fin Categoria-->
+<!--Inicio Proveedores-->
+<section class="bar no-mb" data-aos="fade-up">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading text-center">
+                    <h2>Nuestros Proveedores</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <ol class="list-unstyled owl-carousel customers">
+                    <?php /** @var \app\models\Proveedor $proveedores */
+                    foreach ($proveedores as $proveedor) {
+                        if (!empty($proveedor->imagen)) {
+                            ?>
+                            <li class="item centro-abs">
+                                <a href="<?= Url::to(['producto/proveedor', 'id' => $proveedor->idproveedor]) ?>">
+                                    <img src="/<?= $proveedor->imagen ?>" alt="<?= $proveedor->nombre ?>">
+                                </a>
+                            </li>
+                            <?php
+                        }
+                    } ?>
+                </ol>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <a href="<?= Url::to(['about/proveedores']) ?>" class="btn color-white btn-template-outlined bg-info">
+                    <em class="fas fa-address-book"></em> Ver Todos los Proveedores
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Fin Proveedores-->
+<!--Inicio Productos-->
 <section
         class="bar no-mb text-center bg-fixed relative-positioned animate animate__fadeInLeft"
         data-aos="fade-up">
@@ -373,7 +452,7 @@ try {
     </div>
 </section>
 <section class="services-one services-one--has-top-bg">
-    <div class="container ">
+    <div class="container-flex ">
         <!-- Swiper -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
@@ -381,7 +460,7 @@ try {
                 foreach ($articulos as $articulo) {
                     /* @var $articulo Articulo */
                     if (empty($articulo->rutaimg) || strlen($articulo->rutaimg) <= 5) {
-                        $articulo->rutaimg = 'uploads/logo.png';
+                        $articulo->rutaimg = Url::home(true).'/uploads/logo.png';
                     }
                     ?>
                     <div class="swiper-slide">
@@ -430,81 +509,7 @@ try {
         </div>
     </div>
 </section>
-<section class="bar">
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading text-center">
-                    <h2>Categor&iacute;a de productos</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <?php
-            foreach ($categorias as $key => $categoria) {
-                ?>
-                <div class="col-md col-sm-12">
-                    <div class="box-simple animate__animated animate__bounce" data-aos="fade-right">
-                        <div class="hover hover-3 text-white rounded"
-                             style="background-color: <?= $categoria->color ?>">
-                            <img src="/<?= $categoria->imagen ?>" alt="<?= $categoria->nombre ?>" class="img-fluid"/>
-                            <div class="hover-overlay"></div>
-                            <div class="hover-3-content px-5 py-4 text-center">
-                                <h4 class="hover-3-title font-weight-bold mb-1">
-                                    <a href="<?= Url::to(['producto/categoria', 'id' => $categoria->idcategoria]) ?>"
-                                       class="text-white" style="margin-left: -10px">
-                                        <?= $categoria->nombre ?>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                if ($key == 4) {
-                    echo '</div><div class="row justify-content-center">';
-                }
-            } ?>
-        </div>
-    </div>
-</section>
-
-<section class="bar no-mb" data-aos="fade-up">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading text-center">
-                    <h2>Nuestros Proveedores</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-md-12">
-                <ol class="list-unstyled owl-carousel customers">
-                    <?php /** @var \app\models\Proveedor $proveedores */
-                    foreach ($proveedores as $proveedor) {
-                        if (!empty($proveedor->imagen)) {
-                            ?>
-                            <li class="item centro-abs">
-                                <a href="<?= Url::to(['producto/proveedor', 'id' => $proveedor->idproveedor]) ?>">
-                                    <img src="/<?= $proveedor->imagen ?>" alt="<?= $proveedor->nombre ?>">
-                                </a>
-                            </li>
-                            <?php
-                        }
-                    } ?>
-                </ol>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col">
-                <a href="<?= Url::to(['about/proveedores']) ?>" class="btn color-white btn-template-outlined bg-info">
-                    <em class="fas fa-address-book"></em> Ver Todos los Proveedores
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+<!--Fin Productos-->
 <!--Section de blog o noticias-->
 <section class="blog-two">
     <div class="" style="max-width: 85%; margin:0 auto">
