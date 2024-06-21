@@ -4,8 +4,11 @@
 /** @var \app\models\Proveedor $proveedores */
 
 use yii\bootstrap5\Html;
+use yii\helpers\Url;
+use yii\web\View;
 
 $this->title = "ABRASA - ARTICULOS POR PROVEEDOR";
+$this->registerJsFile(Url::home(true).'/assets/vendor/bootstrap/js/bootstrap.bundle.js',[View::POS_END]);
 ?>
 <p>&nbsp;</p>
 <div class="container-fluid">
