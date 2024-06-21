@@ -80,7 +80,7 @@ class AboutController extends Controller
 
     public function actionProveedores()
     {
-        $proveedores = Proveedor::find()->all();
+        $proveedores = Proveedor::find()->orderBy('orden')->all();
         return $this->render('proveedores', [
             'proveedores' => $proveedores
         ]);
