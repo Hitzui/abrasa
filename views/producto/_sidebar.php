@@ -43,12 +43,15 @@ Yii::$app->view->registerCss($css);
         }
         ?>
         <div class="card">
-            <div id="heading-<?= $categoria->idcategoria ?>" role="tab" class="card-header" style="background-color: #F39200;">
+            <div id="heading-<?= $categoria->idcategoria ?>" role="tab" class="card-header"
+                 style="background-color: #F39200;">
                 <h5 class="mb-0">
-                    <a data-bs-toggle="collapse" href="<?= Url::toRoute(['/producto/categoria','id'=>$categoria->idcategoria])?>#collapse-<?= $categoria->idcategoria ?>"
+                    <a data-bs-toggle="collapse"
+                       href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria])?>#collapse-<?= $categoria->idcategoria ?>"
                        aria-expanded="true" aria-controls="collapse-<?= $categoria->idcategoria ?>"
-                    class="text-white">
-                        <?= $categoria->nombre ?></a>
+                       class="link_categoria text-white">
+                        <?= $categoria->nombre ?>
+                    </a>
                 </h5>
             </div>
             <div id="collapse-<?= $categoria->idcategoria ?>" role="tabpanel"
@@ -101,7 +104,7 @@ Yii::$app->view->registerCss($css);
                     <?php
                     endif;
                     //mostramos las familias en el panel lateral
-                        foreach ($familias as $item):
+                    foreach ($familias as $item):
                         Yii::$app->view->registerJs('
                         $("#familia-' . $item->idfamilia . '").on("shown.bs.collapse", function () {
                         window.location.href = "' . Url::to(['producto/familia', 'idfamilia' => $item->idfamilia, 'sort' => 'ascendente']) . '";
