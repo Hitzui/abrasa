@@ -31,7 +31,7 @@ class Subnoticias extends ActiveRecord
     public function rules()
     {
         return [
-            [['idcategoria', 'nombre', 'imagen'], 'required'],
+            [['idcategoria', 'nombre'], 'required'],
             [['idcategoria'], 'integer'],
             [['nombre', 'imagen'], 'string'],
             [['idcategoria'], 'exist', 'skipOnError' => true, 'targetClass' => Catnoticias::class, 'targetAttribute' => ['idcategoria' => 'idcatnoticias']],

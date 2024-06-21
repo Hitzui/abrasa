@@ -113,10 +113,9 @@ class SubnoticiasController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'imagen');
-            if (isset($file)) {
+            if (!empty($file)) {
                 $file->saveAs($this->ruta . $file->baseName . '.' . $file->getExtension());
                 $model->imagen = Url::base(true) . '/' . $this->ruta . $file->baseName . '.' . $file->getExtension();
             }
