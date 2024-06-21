@@ -46,10 +46,11 @@ Yii::$app->view->registerCss($css);
             <div id="heading-<?= $categoria->idcategoria ?>" role="tab" class="card-header"
                  style="background-color: #F39200;">
                 <h5 class="mb-0">
-                    <a data-bs-toggle="collapse"
+<!-- Se ocultó la siguiente propiedad data-bs-toggle="collapse"-->
+                    <a
                        href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria])?>#collapse-<?= $categoria->idcategoria ?>"
                        aria-expanded="true" aria-controls="collapse-<?= $categoria->idcategoria ?>"
-                       class="link_categoria text-white">
+                       class="text-white">
                         <?= $categoria->nombre ?>
                     </a>
                 </h5>
