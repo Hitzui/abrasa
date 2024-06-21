@@ -5052,6 +5052,7 @@ button {
           transition-delay: 0.3s;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
+  margin:0 auto;
 }
 
 .features-two__single:hover .features-two__single-top .icon {

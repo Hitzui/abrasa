@@ -192,7 +192,7 @@ class AboutController extends Controller
 
     public function actionPerfil()
     {
-        $proveedores = Proveedor::find()->all();
+        $proveedores = Proveedor::find()->orderBy('orden')->all();
         $categoriaTecnicos = Cattecnico::find()->all();
         return $this->render('perfil',
             [
