@@ -14,8 +14,7 @@ use yii\filters\VerbFilter;
  */
 class NoticiaCategoriaArticuloController extends Controller
 {
-    public $layout = 'admin';
-
+    public $layout='admin';
     /**
      * {@inheritdoc}
      */
@@ -23,7 +22,7 @@ class NoticiaCategoriaArticuloController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::class,
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],

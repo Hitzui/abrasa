@@ -3,19 +3,18 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "noticia_categoria_articulo".
  *
  * @property int $idnoticiacategoriaarticulo
  * @property int $idnoticias
- * @property string $idarticulo
+ * @property int $idcatarticulo
  *
- * @property Articulo $idarticulo0
+ * @property Categoria $idcatarticulo0
  * @property Catnoticias $idnoticias0
  */
-class NoticiaCategoriaArticulo extends ActiveRecord
+class NoticiaCategoriaArticulo extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -31,10 +30,9 @@ class NoticiaCategoriaArticulo extends ActiveRecord
     public function rules()
     {
         return [
-            [['idnoticias', 'idarticulo'], 'required'],
-            [['idnoticias'], 'integer'],
-            [['idarticulo'], 'string', 'max' => 20],
-            [['idarticulo'], 'exist', 'skipOnError' => true, 'targetClass' => Articulo::className(), 'targetAttribute' => ['idarticulo' => 'idarticulo']],
+            [['idnoticias', 'idcatarticulo'], 'required'],
+            [['idnoticias', 'idcatarticulo'], 'integer'],
+            [['idcatarticulo'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['idcatarticulo' => 'idcategoria']],
             [['idnoticias'], 'exist', 'skipOnError' => true, 'targetClass' => Catnoticias::className(), 'targetAttribute' => ['idnoticias' => 'idcatnoticias']],
         ];
     }
@@ -47,18 +45,18 @@ class NoticiaCategoriaArticulo extends ActiveRecord
         return [
             'idnoticiacategoriaarticulo' => 'Idnoticiacategoriaarticulo',
             'idnoticias' => 'Idnoticias',
-            'idarticulo' => 'Idarticulo',
+            'idcatarticulo' => 'Idcatarticulo',
         ];
     }
 
     /**
-     * Gets query for [[Idarticulo0]].
+     * Gets query for [[Idcatarticulo0]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIdarticulo0()
+    public function getIdcatarticulo0()
     {
-        return $this->hasOne(Articulo::class, ['idarticulo' => 'idarticulo']);
+        return $this->hasOne(Categoria::className(), ['idcategoria' => 'idcatarticulo']);
     }
 
     /**
@@ -68,6 +66,6 @@ class NoticiaCategoriaArticulo extends ActiveRecord
      */
     public function getIdnoticias0()
     {
-        return $this->hasOne(Catnoticias::class, ['idcatnoticias' => 'idnoticias']);
+        return $this->hasOne(Catnoticias::className(), ['idcatnoticias' => 'idnoticias']);
     }
 }

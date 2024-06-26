@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'idnoticias')->textInput() ?>
 
-    <?= $form->field($model, 'idarticulo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'idcatarticulo')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

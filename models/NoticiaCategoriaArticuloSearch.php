@@ -17,8 +17,7 @@ class NoticiaCategoriaArticuloSearch extends NoticiaCategoriaArticulo
     public function rules()
     {
         return [
-            [['idnoticiacategoriaarticulo', 'idnoticias'], 'integer'],
-            [['idarticulo'], 'safe'],
+            [['idnoticiacategoriaarticulo', 'idnoticias', 'idcatarticulo'], 'integer'],
         ];
     }
 
@@ -60,9 +59,8 @@ class NoticiaCategoriaArticuloSearch extends NoticiaCategoriaArticulo
         $query->andFilterWhere([
             'idnoticiacategoriaarticulo' => $this->idnoticiacategoriaarticulo,
             'idnoticias' => $this->idnoticias,
+            'idcatarticulo' => $this->idcatarticulo,
         ]);
-
-        $query->andFilterWhere(['like', 'idarticulo', $this->idarticulo]);
 
         return $dataProvider;
     }
