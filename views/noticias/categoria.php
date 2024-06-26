@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $categoria Catnoticias */
+/* @var $categoriart array */
 
 use app\models\Catnoticias;
 use app\models\Noticias;
@@ -51,6 +52,37 @@ try {
 </div>
 <div class="">
     <?php
+    if (count($categoriart)>0){?>
+        <div class="container">
+            <div class="row">
+                <?php
+                foreach ($categoriart as $value):
+                    /* @var $value \app\models\Categoria */
+                ?>
+                    <div class="col-md col-sm-12">
+                        <div class="box-simple animate__animated animate__bounce" data-aos="fade-right">
+                            <div class="hover hover-3 text-white rounded"
+                                 style="background-color: <?= $categoria->color ?>">
+                                <img src="/<?= $value->imagen ?>" alt="<?= $value->nombre ?>" class="img-fluid"/>
+                                <div class="hover-overlay"></div>
+                                <div class="hover-3-content px-5 py-4 text-center">
+                                    <h4 class="hover-3-title font-weight-bold mb-1">
+                                        <a href="<?= Url::to(['producto/categoria', 'id' => $value->idcategoria]) ?>"
+                                           class="text-white" style="margin-left: -10px">
+                                            <?= $value->nombre ?>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                endforeach;
+                ?>
+            </div>
+        </div>
+    <?php
+    }
     if (count($subcategoria) > 0) {
         ?>
             <p>&nbsp;</p>

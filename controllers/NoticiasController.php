@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Categoria;
 use app\models\Catnoticias;
 use app\models\Imagenes;
+use app\models\NoticiaCategoriaArticulo;
 use app\models\Subcatnoticias;
 use app\models\Subnoticias;
 use Yii;
@@ -127,6 +128,8 @@ class NoticiasController extends Controller
         $this->layout = 'main';
         $categoria = Catnoticias::findOne($id);
         $query = Noticias::find()->where(['idcategoria' => $id]);
+        $catnot = NoticiaCategoriaArticulo::findAll(['idnoticias'=>$id]);
+        $categoriart = Categoria::find()->where(['idcategoria'=>$catnot])->all();
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count]);
         $noticias = $query->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -135,6 +138,7 @@ class NoticiasController extends Controller
             'subcategoria' => $subcategoria,
             'noticias' => $noticias,
             'categoria' => $categoria,
+            'categoriart' => $categoriart,
             'pagination' => $pagination
         ]);
     }
