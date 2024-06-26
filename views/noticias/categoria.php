@@ -33,7 +33,7 @@ try {
                 <?php
                 }else{
                     ?>
-                    <h3 style="font-family: 'Lora','sans-serif'">Noticias</h3>
+                    <h3 style="font-family: 'Lora','sans-serif'">Sección: <?= $categoria->descripcion?></h3>
                 <?php
                 }
                 ?>
@@ -53,6 +53,7 @@ try {
 <div class="">
     <?php
     if (count($categoriart)>0){?>
+        <br />
         <div class="container">
             <div class="row">
                 <?php
