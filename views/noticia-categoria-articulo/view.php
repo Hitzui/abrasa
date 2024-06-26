@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Noticia Categoria Articulos', 'url
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="noticia-categoria-articulo-view">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
