@@ -1,5 +1,6 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -13,7 +14,24 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'idnoticias')->textInput() ?>
-
+    <?php
+    echo $form->field($model, 'idnoticias')->widget(Select2::class, [
+        'data' => $catnoticias,
+        'options' => ['placeholder' => 'Seleccione una categoria...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
+    <?php
+    echo $form->field($model, 'idcatarticulo')->widget(Select2::class, [
+        'data' => $categorias,
+        'options' => ['placeholder' => 'Seleccione una categoria...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
     <?= $form->field($model, 'idcatarticulo')->textInput() ?>
 
     <div class="form-group">

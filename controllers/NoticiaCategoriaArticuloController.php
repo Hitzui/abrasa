@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Categoria;
+use app\models\CategoriaSearch;
+use app\models\Catnoticias;
 use Yii;
 use app\models\NoticiaCategoriaArticulo;
 use app\models\NoticiaCategoriaArticuloSearch;
@@ -66,12 +69,15 @@ class NoticiaCategoriaArticuloController extends Controller
     public function actionCreate()
     {
         $model = new NoticiaCategoriaArticulo();
-
+        $categorias = Categoria::find()->all();
+        $catnoticias = Catnoticias::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idnoticiacategoriaarticulo]);
         }
 
         return $this->render('create', [
+            'categorias'=>$categorias,
+            'catnoticias'=>$catnoticias,
             'model' => $model,
         ]);
     }
@@ -86,12 +92,15 @@ class NoticiaCategoriaArticuloController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $categorias = Categoria::find()->all();
+        $catnoticias = Catnoticias::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idnoticiacategoriaarticulo]);
         }
 
         return $this->render('update', [
+            'categorias'=>$categorias,
+            'catnoticias'=>$catnoticias,
             'model' => $model,
         ]);
     }
