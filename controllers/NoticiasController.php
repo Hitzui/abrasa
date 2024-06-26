@@ -128,7 +128,7 @@ class NoticiasController extends Controller
         $this->layout = 'main';
         $categoria = Catnoticias::findOne($id);
         $query = Noticias::find()->where(['idcategoria' => $id]);
-        $catnot = NoticiaCategoriaArticulo::find()->where(['idnoticias'=>$id])->all();
+        $catnot = NoticiaCategoriaArticulo::find()->where(['idnoticias'=>$id])->select('idcatarticulo');
         $categoriart = Categoria::find()->where(['idcategoria'=>$catnot])->all();
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count]);

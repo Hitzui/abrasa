@@ -58,11 +58,11 @@ try {
                 <?php
                 foreach ($categoriart as $value):
                     /* @var $value \app\models\Categoria */
-                ?>
+                    ?>
                     <div class="col-md col-sm-12">
                         <div class="box-simple animate__animated animate__bounce" data-aos="fade-right">
                             <div class="hover hover-3 text-white rounded"
-                                 style="background-color: <?= $categoria->color ?>">
+                                 style="background-color: <?= $value->color ?>">
                                 <img src="/<?= $value->imagen ?>" alt="<?= $value->nombre ?>" class="img-fluid"/>
                                 <div class="hover-overlay"></div>
                                 <div class="hover-3-content px-5 py-4 text-center">
@@ -81,7 +81,7 @@ try {
                 ?>
             </div>
         </div>
-    <?php
+        <?php
     }
     if (count($subcategoria) > 0) {
         ?>
