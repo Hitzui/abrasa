@@ -13,7 +13,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idnoticias')->textInput() ?>
     <?php
     echo $form->field($model, 'idnoticias')->widget(Select2::class, [
         'data' => $catnoticias,
@@ -32,7 +31,6 @@ use yii\widgets\ActiveForm;
         ],
     ]);
     ?>
-    <?= $form->field($model, 'idcatarticulo')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
