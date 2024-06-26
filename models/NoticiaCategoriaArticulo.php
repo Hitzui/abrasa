@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "noticia_categoria_articulo".
@@ -11,10 +12,10 @@ use Yii;
  * @property int $idnoticias
  * @property string $idarticulo
  *
- * @property Articulo $articulo
- * @property Noticias $noticias
+ * @property Articulo $idarticulo0
+ * @property Catnoticias $idnoticias0
  */
-class NoticiaCategoriaArticulo extends \yii\db\ActiveRecord
+class NoticiaCategoriaArticulo extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -34,7 +35,7 @@ class NoticiaCategoriaArticulo extends \yii\db\ActiveRecord
             [['idnoticias'], 'integer'],
             [['idarticulo'], 'string', 'max' => 20],
             [['idarticulo'], 'exist', 'skipOnError' => true, 'targetClass' => Articulo::className(), 'targetAttribute' => ['idarticulo' => 'idarticulo']],
-            [['idnoticias'], 'exist', 'skipOnError' => true, 'targetClass' => Noticias::className(), 'targetAttribute' => ['idnoticias' => 'idnoticias']],
+            [['idnoticias'], 'exist', 'skipOnError' => true, 'targetClass' => Catnoticias::className(), 'targetAttribute' => ['idnoticias' => 'idcatnoticias']],
         ];
     }
 
@@ -55,7 +56,7 @@ class NoticiaCategoriaArticulo extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getArticulo()
+    public function getIdarticulo0()
     {
         return $this->hasOne(Articulo::class, ['idarticulo' => 'idarticulo']);
     }
@@ -65,8 +66,8 @@ class NoticiaCategoriaArticulo extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getNoticias()
+    public function getIdnoticias0()
     {
-        return $this->hasOne(Noticias::class, ['idnoticias' => 'idnoticias']);
+        return $this->hasOne(Catnoticias::class, ['idcatnoticias' => 'idnoticias']);
     }
 }
