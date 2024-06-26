@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Articulo;
 use app\models\Categoria;
 use app\models\CategoriaSearch;
 use app\models\Catnoticias;
 use Yii;
 use app\models\NoticiaCategoriaArticulo;
 use app\models\NoticiaCategoriaArticuloSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -69,8 +71,8 @@ class NoticiaCategoriaArticuloController extends Controller
     public function actionCreate()
     {
         $model = new NoticiaCategoriaArticulo();
-        $categorias = Categoria::find()->all();
-        $catnoticias = Catnoticias::find()->all();
+        $categorias = ArrayHelper::map(Categoria::find()->all(), 'idcategoria', 'nombre');
+        $catnoticias =ArrayHelper::map( Catnoticias::find()->all(), 'idcatnoticias', 'descripcion');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idnoticiacategoriaarticulo]);
         }
@@ -92,8 +94,8 @@ class NoticiaCategoriaArticuloController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $categorias = Categoria::find()->all();
-        $catnoticias = Catnoticias::find()->all();
+        $categorias = ArrayHelper::map(Categoria::find()->all(), 'idcategoria', 'nombre');
+        $catnoticias =ArrayHelper::map( Catnoticias::find()->all(), 'idcatnoticias', 'descripcion');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idnoticiacategoriaarticulo]);
         }
