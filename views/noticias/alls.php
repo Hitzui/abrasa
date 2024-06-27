@@ -2,6 +2,7 @@
 
 use kartik\grid\GridView;
 use yii\bootstrap5\Html;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
@@ -46,9 +47,9 @@ $this->params['breadcrumbs'][] = '/' . $this->title;
                             'value' => function ($data) {
                                 $img = $data->imagen;
                                 if (strlen($img) < 3) {
-                                    $img = 'uploads/logo.png';
+                                    $img = Url::base(true).'/uploads/logo.png';
                                 }
-                                return Html::img('/' . $img, ['style' => 'max-width:35%', 'alt' => 'Abrasa']);
+                                return Html::img( $img, ['style' => 'max-width:35%', 'alt' => 'Abrasa']);
                             },
                         ],
                         ['class' => 'yii\grid\ActionColumn'],
