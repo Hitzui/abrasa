@@ -58,8 +58,9 @@ $this->registerJs('$("#noticias-fecha").datepicker({format: "yyyy-mm-dd",})', Vi
                 }
                 try {
                     echo $form->field($model, 'imagen')->widget(FileInput::class, [
-                        'options' => ['accept' => 'image/*'],
+                        //'options' => ['accept' => 'image/*'],
                     ]);
+                    echo $form->field($model, 'imagen');
                 } catch (Exception $e) {
                     echo '<div class="alert alert-danger">' . $e->getMessage() . '</div>';
                 } ?>

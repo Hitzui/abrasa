@@ -8,6 +8,7 @@ use app\models\Imagenes;
 use app\models\NoticiaCategoriaArticulo;
 use app\models\Subcatnoticias;
 use app\models\Subnoticias;
+use Exception;
 use Yii;
 use app\models\Noticias;
 use app\models\NoticiasSearch;
@@ -28,6 +29,7 @@ use yii\web\UploadedFile;
 class NoticiasController extends Controller
 {
     public $layout = 'admin';
+    private $path = 'uploads/noticias/';
 
     /**
      * {@inheritdoc}
@@ -128,8 +130,8 @@ class NoticiasController extends Controller
         $this->layout = 'main';
         $categoria = Catnoticias::findOne($id);
         $query = Noticias::find()->where(['idcategoria' => $id]);
-        $catnot = NoticiaCategoriaArticulo::find()->where(['idnoticias'=>$id])->select('idcatarticulo');
-        $categoriart = Categoria::find()->where(['idcategoria'=>$catnot])->all();
+        $catnot = NoticiaCategoriaArticulo::find()->where(['idnoticias' => $id])->select('idcatarticulo');
+        $categoriart = Categoria::find()->where(['idcategoria' => $catnot])->all();
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count]);
         $noticias = $query->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -147,8 +149,7 @@ class NoticiasController extends Controller
     {
         $this->layout = 'main';
         $sub = Subcatnoticias::find()->where(['idsubcategoria' => $id]);
-        $idnoticias = $sub->select('idnoticia')->all();
-        $query = Noticias::find()->andFilterWhere(['in', 'idnoticias', $sub]);
+        $query = Noticias::find()->andFilterWhere(['in', 'idnoticias', $sub->select('idsubcategoria')]);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count]);
         $noticias = $query->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -160,6 +161,11 @@ class NoticiasController extends Controller
         ]);
     }
 
+    protected function ComboBoxCategoriaNoticias()
+    {
+        return ArrayHelper::map(Catnoticias::find()->all(), 'idcatnoticias', 'descripcion');
+    }
+
     /**
      * Creates a new Noticias model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -168,7 +174,6 @@ class NoticiasController extends Controller
     public function actionCreate()
     {
         $model = new Noticias();
-        $catnoticias = ArrayHelper::map(Catnoticias::find()->all(), 'idcatnoticias', 'descripcion');
         if ($model->load(Yii::$app->request->post())) {
             if ($this->save($model, '')) {
                 return $this->redirect(['view', 'id' => $model->idnoticias]);
@@ -176,7 +181,7 @@ class NoticiasController extends Controller
         }
         return $this->render('create', [
             'model' => $model,
-            'catnoticias'=>$catnoticias
+            'catnoticias' => $this->ComboBoxCategoriaNoticias()
         ]);
     }
 
@@ -191,7 +196,6 @@ class NoticiasController extends Controller
     {
         $model = $this->findModel($id);
         $imagen = $model->imagen;
-        $catnoticias = ArrayHelper::map(Catnoticias::find()->all(), 'idcatnoticias', 'descripcion');
         if ($model->load(Yii::$app->request->post())) {
             if ($this->save($model, $imagen)) {
                 return $this->redirect(['view', 'id' => $model->idnoticias]);
@@ -199,7 +203,7 @@ class NoticiasController extends Controller
         }
         return $this->render('update', [
             'model' => $model,
-            'catnoticias'=>$catnoticias
+            'catnoticias' => $this->ComboBoxCategoriaNoticias()
         ]);
     }
 
@@ -235,21 +239,42 @@ class NoticiasController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    protected function updateFile(UploadedFile $file, Noticias $model)
+    {
+        if (strlen($file->baseName) >= 1) {
+            if (!file_exists($this->path)) {
+                mkdir($this->path);
+            }
+            $file->saveAs($this->path . $file->baseName . '.' . $file->extension);
+            $model->imagen = Url::base(true) . '/' . $this->path . $file->baseName . '.' . $file->extension;
+        }
+    }
+
+    function isYouTubeUrl($url)
+    {
+        $patterns = [
+            '/youtube\.com\/watch\?v=[^&]+/',  // URLs de YouTube estándar
+            '/youtu\.be\/[^?]+/'              // URLs cortas de YouTube
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $url)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private function save(Noticias $model, string $imagen): bool
     {
-        $path = 'uploads/noticias/';
+
         if ($model->validate()) {
             $file = UploadedFile::getInstance($model, 'imagen');
-            $path .= $model->idnoticias;
-            if (isset($file)) {
-                if (!file_exists($path)) {
-                    mkdir($path);
-                }
-                $file->saveAs($path . '/' . $file->baseName . '.' . $file->extension);
-                $model->imagen = Url::base(true) . '/' . $path . '/' . $file->baseName . '.' . $file->extension;
-            } else {
-                $model->imagen = $imagen;
+            $this->path .= $model->idnoticias;
+            if(isset($file)){
+                $this->updateFile($file, $model);
             }
+
             if ($model->save()) {
                 return true;
             } else {

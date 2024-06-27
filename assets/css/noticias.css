@@ -449,6 +449,11 @@ progress {
   font-size: 0.8em;
   color: #6c757d; }
 
+.splide__slide img {
+  width: 100%;
+  height: auto;
+}
+
 .container,
 .container-fluid,
 .container-sm,

@@ -39,7 +39,7 @@ class AppAsset extends AssetBundle
         'assets/vendor/waypoints/jquery.waypoints.min.js',
         'assets/vendor/counterup/counterup.min.js',
         'assets/js/bootstrap-hover-dropdown.js',
-        'https://jssors8.azureedge.net/script/jssor.slider-28.1.0.min.js',        
+        'https://cdnjs.cloudflare.com/ajax/libs/jssor-slider/28.0.0/jssor.slider.min.js',
         'assets/vendor/owl.carousel/owl.carousel.min.js',
         'assets/js/agriox.js',
         'assets/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js',
