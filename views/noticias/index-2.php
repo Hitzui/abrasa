@@ -1,16 +1,44 @@
 <?php
 
 use yii\helpers\Url;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $noticias array */
 
+$identificador=0;
+if (isset($item)){
+    $identificador=$item->idsubnoticias;
+}
+$perPage =2;
+if (count($noticias)<=1){
+    $perPage=1;
+}
+$js = <<<JS
+  document.addEventListener( 'DOMContentLoaded', function () {
+    new Splide( '#image-carousel-$identificador',{
+        type       : 'loop',
+        padding    : '5rem',
+        perPage    : $perPage,
+		breakpoints: {
+			640: {
+				perPage: 1,
+			},
+		},
+		video: {
+            loop         : true,
+            mute         : true
+          }
+    } ).mount()
+  } );
+JS;
+$this->registerJs($js, View::POS_END);
 
 ?>
 
 
 <!--Inicio Carousel de noticias-->
-<section id="image-carousel" class="splide" aria-label="Noticias sobre abrasa">
+<section id="image-carousel-<?=$identificador?>" class="splide" aria-label="Noticias sobre abrasa">
     <div class="splide__track">
         <ul class="splide__list">
             <?php

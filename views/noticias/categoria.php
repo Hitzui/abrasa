@@ -19,6 +19,7 @@ $this->title = 'Noticias';
 $this->params['breadcrumbs'][] = ['label' => 'Categoria Noticias', 'url' => ['noticias/index']];
 $this->params['breadcrumbs'][] = 'Noticias';
 try {
+
     $this->registerCssFile(Url::base(true) . '/assets/css/noticias.css');
     $this->registerCssFile('https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', ['depends' => [BootstrapAsset::class]]);
     $this->registerJsFile(Url::base(true) . '/assets/vendor/bootstrap/js/bootstrap.bundle.js');
@@ -40,25 +41,7 @@ try {
 
 CSS;
     $this->registerCss($css);
-    $js = <<<JS
-  document.addEventListener( 'DOMContentLoaded', function () {
-    new Splide( '#image-carousel',{
-        type       : 'loop',
-        padding    : '5rem',
-        perPage    : 2,
-		breakpoints: {
-			640: {
-				perPage: 1,
-			},
-		},
-		video: {
-            loop         : true,
-            mute         : true
-          }
-    } ).mount()
-  } );
-JS;
-    $this->registerJs($js, View::POS_END);
+
 
     function isYouTubeUrl($url)
     {
