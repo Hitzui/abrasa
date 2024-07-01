@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
                         'multiple' => $multiple,
                     ]
                 ]) ?>
-
+                <?= $form->field($model, 'ruta') ?>
                 <?= $form->field($model, 'idnoticia')->widget(Select2::class, [
                     'data' => $noticias,
                     'options' => ['placeholder' => 'Seleccione una noticia'],

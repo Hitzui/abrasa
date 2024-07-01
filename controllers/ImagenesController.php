@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use function PHPUnit\Framework\directoryExists;
 
 /**
  * ImagenesController implements the CRUD actions for Imagenes model.
@@ -91,29 +92,31 @@ class ImagenesController extends Controller
         $model = new Imagenes();
         $noticias = ArrayHelper::map(Noticias::find()->all(), 'idnoticias', 'titulo');
         if ($model->load(Yii::$app->request->post())) {
-            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
-            $files = $model->imageFiles;
             $connection = \Yii::$app->db;
             $transaction = $connection->beginTransaction();
             try {
+                $files = UploadedFile::getInstances($model, 'imageFiles');
                 if ($model->validate()) {
-                    if (!file_exists($this->path . $model->idnoticia)) {
-                        mkdir($this->path . $model->idnoticia);
-                    }
-                    foreach ($files as $file) {
-                        $file->saveAs($this->path . $model->idnoticia . '/' . $file->baseName . '.' . $file->extension);
-                        $img = new Imagenes();
-                        $img->ruta = $this->path . $model->idnoticia . '/' . $file->baseName . '.' . $file->extension;
-                        $img->idnoticia = $model->idnoticia;
-                        $img->save(false);
+                    if (count($files)>0) {
+                        if (!directoryExists($this->path . $model->idnoticia)) {
+                            mkdir($this->path . $model->idnoticia);
+                        }
+                        foreach ($files as $file) {
+                            $file->saveAs($this->path . $model->idnoticia . '/' . $file->baseName . '.' . $file->extension);
+                            $img = new Imagenes();
+                            $img->ruta = $this->path . $model->idnoticia . '/' . $file->baseName . '.' . $file->extension;
+                            $img->idnoticia = $model->idnoticia;
+                            $img->save(false);
+                        }
+                    }else{
+                        $model->save(false);
                     }
                     $transaction->commit();
-                    return $this->redirect('view', [
-                        'model'=>$model
-                    ]);
+                    return $this->redirect(['view', 'id' => $model->idimagenes]);
                 }
             } catch (\Exception $exception) {
                 $transaction->rollBack();
+                Yii::$app->session->setFlash('error', $exception->getMessage().$exception->getTraceAsString());
                 return $this->render('create', [
                     'model' => $model,
                     'noticias' => $noticias,

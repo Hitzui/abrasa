@@ -6,19 +6,88 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $noticia app\models\Noticias */
-/* @var $imagenes app\models\Imagenes */
-
+/* @var $imagenes array */
+/* @var $imagen app\models\Imagenes */
 $this->title = 'ABRASA - EVENTOS';
 
 $this->registerCssFile('/assets/css/noticias.css');
+$css = <<<CSS
+.contenedor-responsivo {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+.mi-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+CSS;
+$this->registerCss($css);
+function isYouTubeUrl($url)
+{
+    $patterns = [
+        '/youtube\.com\/\?v=[^&]+/',  // URLs de YouTube estándar
+        '/youtu\.be\/[^?]+/'              // URLs cortas de YouTube
+    ];
+
+    foreach ($patterns as $pattern) {
+        if (preg_match($pattern, $url)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function getUrlType($url)
+{
+    // Comprobar si es un video de YouTube
+    if (isYouTubeUrl($url)) {
+        return 'YouTube';
+    }
+
+    // Obtener la extensión del archivo
+    $path = parse_url($url, PHP_URL_PATH);
+    $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+    // Comprobar si es un archivo MP4
+    if ($extension === 'mp4') {
+        return 'Video';
+    }
+
+    // Comprobar si es una imagen
+    $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    if (in_array($extension, $imageExtensions)) {
+        return 'Imagen';
+    }
+
+    // Obtener los headers del contenido para verificar el tipo MIME
+    $headers = get_headers($url, 1);
+    if (isset($headers['Content-Type'])) {
+        $contentType = is_array($headers['Content-Type']) ? $headers['Content-Type'][0] : $headers['Content-Type'];
+        if (strpos($contentType, 'image/') === 0) {
+            return 'Imagen';
+        } elseif (strpos($contentType, 'video/') === 0) {
+            return 'Video';
+        }
+    }
+
+    return 'Unknown';
+}
+
 ?>
 <p>&nbsp;</p>
 <div class="container">
     <div class="col-md-12">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= Url::to(['index'])?>">Noticias</a></li>
-                <li class="breadcrumb-item active" aria-current="<?= Url::to(['noticias'])?>"><?= $noticia->fecha ?></li>
+                <li class="breadcrumb-item"><a href="<?= Url::to(['index']) ?>">Noticias</a></li>
+                <li class="breadcrumb-item active"
+                    aria-current="<?= Url::to(['noticias']) ?>"><?= $noticia->fecha ?></li>
             </ol>
         </nav>
     </div>
@@ -46,10 +115,37 @@ $this->registerCssFile('/assets/css/noticias.css');
                             </ol>
                             <div class="carousel-inner">
                                 <?php
-                                foreach ($imagenes as $k => $imagen) { ?>
+                                foreach ($imagenes as $k => $imagen) {
+                                    $path = "";
+                                    if (strlen($imagen->ruta) === 0) {
+                                        $path = Url::base(true) . '/assets/img/logo.png';
+                                    } else {
+                                        $path = $imagen->ruta;
+                                    }
+                                    $extension = getUrlType($path);
+                                    ?>
                                     <div class="carousel-item <?php echo ($k == 0) ? 'active' : '' ?>">
-                                        <img height="500" class="d-block w-100" src="/<?= $imagen->ruta ?>"
-                                             alt="First slide"/>
+                                        <?php
+                                        if ($extension == 'Video') { ?>
+                                            <video width="100%" height="500px" autoplay muted loop
+                                                   style="width: 100%; height: auto">
+                                                <source src="<?= $path ?>" type="video/mp4" controls="false">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        <?php } else if ($extension == 'Imagen') { ?>
+                                            <img src="<?= $path ?>" alt="Noticias ABRASA"/>
+                                        <?php } else { ?>
+                                            <div class="contenedor-responsivo">
+                                                <iframe class="mi-iframe"
+                                                        src="<?= $path ?>"
+                                                        title="Videos de Abrasa Nicaragua" frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        referrerpolicy="strict-origin-when-cross-origin"
+                                                        allowfullscreen></iframe>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                     <?php
                                 }

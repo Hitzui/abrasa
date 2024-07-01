@@ -38,8 +38,8 @@ class Imagenes extends \yii\db\ActiveRecord
         return [
             [['idnoticia'], 'required'],
             [['idnoticia','idimagenes'], 'integer'],
-            [['ruta'], 'string', 'max' => 300],
-            [['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg,jpeg', 'maxFiles' => 5],
+            [['ruta'], 'string'],
+            [['imageFiles'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg, mp4', 'maxFiles' => 5],
             [['idnoticia'], 'exist', 'skipOnError' => true, 'targetClass' => Noticias::class, 'targetAttribute' => ['idnoticia' => 'idnoticias']],
         ];
     }
