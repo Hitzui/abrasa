@@ -265,6 +265,58 @@ JS;
 $this->registerCss($css);
 $this->registerJs($js, View::POS_END);
 try {
+
+    function isYouTubeUrl($url)
+    {
+        $patterns = [
+            '/youtube\.com\/\?v=[^&]+/',  // URLs de YouTube estándar
+            '/youtu\.be\/[^?]+/'              // URLs cortas de YouTube
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $url)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function getUrlType($url)
+    {
+        // Comprobar si es un video de YouTube
+        if (isYouTubeUrl($url)) {
+            return 'YouTube';
+        }
+
+        // Obtener la extensión del archivo
+        $path = parse_url($url, PHP_URL_PATH);
+        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+        // Comprobar si es un archivo MP4
+        if ($extension === 'mp4') {
+            return 'Video';
+        }
+
+        // Comprobar si es una imagen
+        $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+        if (in_array($extension, $imageExtensions)) {
+            return 'Imagen';
+        }
+
+        // Obtener los headers del contenido para verificar el tipo MIME
+        $headers = get_headers($url, 1);
+        if (isset($headers['Content-Type'])) {
+            $contentType = is_array($headers['Content-Type']) ? $headers['Content-Type'][0] : $headers['Content-Type'];
+            if (strpos($contentType, 'image/') === 0) {
+                return 'Imagen';
+            } elseif (strpos($contentType, 'video/') === 0) {
+                return 'Video';
+            }
+        }
+
+        return 'Unknown';
+    }
+
     $this->registerCssFile(Url::base(true) . '/assets/css/mdb.min.css', ['depends' => [BootstrapAsset::class]]);
     //$this->registerCssFile(Url::base(true) . '/assets/css/agriox.css', ['depends' => [BootstrapAsset::class]]);
     $this->registerCssFile(Url::base(true) . '/assets/css/splide.min.css', ['depends' => [JqueryAsset::class]]);
@@ -280,7 +332,8 @@ try {
 ?>
 
 <!-- Carousel wrapper -->
-<div style="max-height: 750px" id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
+<div style="max-height: 750px" id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel"
+     data-mdb-carousel-init>
     <!-- Indicators -->
     <div class="carousel-indicators">
         <?php
@@ -460,7 +513,7 @@ try {
                 foreach ($articulos as $articulo) {
                     /* @var $articulo Articulo */
                     if (empty($articulo->rutaimg) || strlen($articulo->rutaimg) <= 5) {
-                        $articulo->rutaimg = Url::home(true).'/uploads/logo.png';
+                        $articulo->rutaimg = Url::home(true) . '/uploads/logo.png';
                     }
                     ?>
                     <div class="swiper-slide">
@@ -470,7 +523,8 @@ try {
                             </div>
                             <a href="#" data-toggle="modal" data-target="#modal-<?= $articulo->idarticulo ?>">
                                 <div class="imagen_producto centro-abs">
-                                    <img src="/<?= $articulo->rutaimg ?>" alt="Abrasa" class="img-producto" height="200px"/>
+                                    <img src="/<?= $articulo->rutaimg ?>" alt="Abrasa" class="img-producto"
+                                         height="200px"/>
                                 </div>
                             </a>
                             <div style="text-align: right;overflow: hidden;padding:5px">
@@ -548,18 +602,44 @@ try {
                         <?php
                         foreach ($noticias as $item) {
                             /* @var $item Noticias */
+                            $path = "";
+                            if (strlen($item->imagen) === 0) {
+                                $path = Url::base(true) . '/assets/img/logo.png';
+                            } else {
+                                $path = $item->imagen;
+                            }
+                            $extension = getUrlType($path);
                             ?>
                             <div class="blog-one__single">
                                 <div class="blog-one__single-img">
-                                    <img src="<?= Url::home(true) . $item->imagen ?>" alt="Abrasa"
-                                         style="height: 225px"/>
+                                    <?php
+                                    if ($extension == 'Video') { ?>
+                                        <video width="100%" height="225px" autoplay muted loop
+                                               style="width: 100%; height: auto">
+                                            <source src="<?= $path ?>" type="video/mp4" controls="false">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    <?php } else if ($extension == 'Imagen') { ?>
+                                        <img src="<?= $path ?>" alt="Noticias ABRASA" style="height: 225px"/>
+                                    <?php } else { ?>
+                                        <div class="contenedor-responsivo">
+                                            <iframe height="225px" width="100%"
+                                                    src="<?= $path ?>"
+                                                    title="Videos de Abrasa Nicaragua" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
                                     <div class="date-box">
                                         <span><?= $item->fecha ?></span>
                                     </div>
                                     <div class="overlay-icon">
                                         <a href="<?= Url::to(['noticias/find', 'id' => $item->idnoticias]) ?>">
-                                            <span class="icon-eye"></span>
-                                            .</a>
+                                            <span class="icon-eye"></span>.
+                                        </a>
                                     </div>
                                 </div>
 
