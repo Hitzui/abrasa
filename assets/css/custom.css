@@ -470,10 +470,10 @@
     min-height: 400px;
     min-width: 350px;
 }
-.min_producto_2 .imagen_producto img{
+/*.min_producto_2 .imagen_producto img{
     width: 100%;
     height: 250px;
-}
+}*/
 .min_producto_2 .modelo_producto{
     margin: 5px;
     border-top: .7px solid grey;
