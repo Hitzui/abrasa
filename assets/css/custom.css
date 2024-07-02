@@ -438,6 +438,10 @@
     position: relative;
     height: 350px;
     width: 400px;
+    /* Center vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .min_producto_2 .box_oferta{
     background-color: #627681;
