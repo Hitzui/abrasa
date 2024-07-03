@@ -523,7 +523,7 @@ try {
                             </div>
                             <a href="#" data-toggle="modal" data-target="#modal-<?= $articulo->idarticulo ?>">
                                 <div class="imagen_producto centro-abs">
-                                    <img src="/<?= $articulo->rutaimg ?>" alt="Abrasa" class="img-fluid"/>
+                                    <img src="/<?= $articulo->rutaimg ?>" alt="Abrasa" style="max-height: 350px; width: auto"/>
                                 </div>
                             </a>
                             <div style="text-align: right;overflow: hidden;padding:5px">
