@@ -23,13 +23,15 @@ use yii\widgets\LinkPager;
                     <div class="nombre_producto text-center rounded shadow">
                         <?= $articulo->descripcion ?>
                     </div>
-                    <!--<a href="#" data-toggle="modal" data-target="#modal-<?php /*= $articulo->idarticulo */?>">-->
-                        <div class="imagen_producto centro-abs">
-                            <a href="<?=Url::base(true)?>/<?= $articulo->rutaimg ?>"
-                               data-toggle="lightbox" data-caption="<?= $articulo->descripcion ?>" data-gallery="articulo-gallery">
-                                <img  src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>" />
-                            </a>
-                        </div>
+                    <!--<a href="#" data-toggle="modal" data-target="#modal-<?php /*= $articulo->idarticulo */ ?>">-->
+                    <div class="imagen_producto centro-abs">
+                        <a href="<?= Url::base(true) ?>/<?= $articulo->rutaimg ?>"
+                           data-toggle="lightbox" data-caption="<?= $articulo->descripcion ?>"
+                           data-gallery="articulo-gallery">
+                            <img src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>"
+                                 style="object-fit: contain"/>
+                        </a>
+                    </div>
                     <!--</a>-->
                     <div style="text-align: right;overflow: hidden;padding:5px">
                         <a href="<?= Url::to(["producto/view", 'idarticulo' => $articulo->idarticulo]) ?>">
