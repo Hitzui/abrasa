@@ -471,10 +471,10 @@
     max-height: 400px;
     max-width: 350px;
 }
-.min_producto_2 .imagen_producto img{
+/*.min_producto_2 .imagen_producto img{
     width: 300px;
     height: 300px;
-}
+}*/
 .min_producto_2 .modelo_producto{
     margin: 5px;
     border-top: .7px solid grey;
