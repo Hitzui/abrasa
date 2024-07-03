@@ -468,8 +468,8 @@
     background-position: center;
     margin: 5px;
     position: relative;
-    max-height: 400px;
-    max-width: 350px;
+    height: 400px;
+    width: 350px;
 }
 /*.min_producto_2 .imagen_producto img{
     width: 300px;

@@ -521,7 +521,7 @@ try {
                             <div class="nombre_producto text-center rounded shadow" style="min-height: 50px">
                                 <span><?= $articulo->descripcion ?></span>
                             </div>
-                            <div class="imagen_producto centro-abs">
+                            <div class="imagen_producto">
                                 <img src="/<?= $articulo->rutaimg ?>" alt="Abrasa"/>
                             </div>
                             <div style="text-align: right;overflow: hidden;padding:5px">
