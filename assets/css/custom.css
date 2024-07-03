@@ -463,7 +463,7 @@
     padding: 10px 10px 5px;
     align-items: center;
 }
-.min_producto_2 .imagen_producto{
+/*.min_producto_2 .imagen_producto{
     background-size: cover;
     background-position: center;
     margin: 5px;
@@ -471,7 +471,7 @@
     height: 400px;
     width: 350px;
 }
-/*.min_producto_2 .imagen_producto img{
+.min_producto_2 .imagen_producto img{
     width: 300px;
     height: 300px;
 }*/
