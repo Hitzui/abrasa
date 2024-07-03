@@ -466,7 +466,7 @@
 .min_producto_2 .imagen_producto{
     background-size: cover;
     background-position: center;
-    margin: 5px;
+    margin: 0 auto;
     position: relative;
     height: 400px;
     width: 350px;
