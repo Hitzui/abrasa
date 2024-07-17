@@ -400,6 +400,7 @@ class ProductoController extends Controller
         if (count($detaFamilia) > 0) {
             $familias = Familia::find()->where(['idfamilia' => $detaFamilia])->all();
             $family = Familia::find()->where(['idfamilia' => $detaFamilia])->one();
+            $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
         } else {
             $family = new Familia();
             $familias = null;
