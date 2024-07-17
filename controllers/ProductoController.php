@@ -388,6 +388,9 @@ class ProductoController extends Controller
         $ids = array();
         $subcategoria = Subcategoria::findOne(['idsubcategoria' => $find->idsubcategoria]);
         $category = Categoria::findOne(['idcategoria' => $subcategoria->idcategoria]);
+        if (is_null($category)) {
+            $category = new Categoria();
+        }
         $detaFamilia = FamiliaArticulo::find()->where(['idarticulo' => $find->idarticulo])->all();
         $presentaciones = Presentacion::find()->where(['idarticulo' => $idarticulo])->all();
         if (count($detaFamilia) > 0) {
