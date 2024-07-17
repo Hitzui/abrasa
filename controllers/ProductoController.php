@@ -389,7 +389,7 @@ class ProductoController extends Controller
         $ids = array();
         $subcategoria = Subcategoria::findOne(['idsubcategoria' => $find->idsubcategoria]);
         $category=null;
-        if (!isnull($subcategoria)) {
+        if (!is_null($subcategoria)) {
             $category = Categoria::findOne(['idcategoria' => $subcategoria->idcategoria]);
         }
         if (is_null($category)) {
