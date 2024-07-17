@@ -385,12 +385,14 @@ class ProductoController extends Controller
     {
         $find = Articulo::findOne(["idarticulo" => $idarticulo]);
         $categorias = Categoria::find()->all();
+        $familiaArticulo = FamiliaArticulo::find()->where(['idarticulo' => $idarticulo])->one();
         $deta = Detaproveedor::find()->where(['idarticulo' => $find->idarticulo])->all();
+        $family = Familia::find()->where(['idfamilia' => $familiaArticulo->idfamilia])->one();
         $ids = array();
-        $subcategoria = Subcategoria::findOne(['idsubcategoria' => $find->idsubcategoria]);
+        $subcategoria = Subcategoria::findOne(['idsubcategoria' => $familiaArticulo->idsubcategoria]);
         $category=null;
-        if (!is_null($subcategoria)) {
-            $category = Categoria::findOne(['idcategoria' => $subcategoria->idcategoria]);
+        if (!is_null($family)) {
+            $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
         }
         if (is_null($category)) {
             $category = new Categoria();
