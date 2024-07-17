@@ -19,6 +19,7 @@ use yii\filters\Cors;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\web\Controller;
+use function PHPUnit\Framework\isNull;
 
 class ProductoController extends Controller
 {
@@ -387,7 +388,10 @@ class ProductoController extends Controller
         $deta = Detaproveedor::find()->where(['idarticulo' => $find->idarticulo])->all();
         $ids = array();
         $subcategoria = Subcategoria::findOne(['idsubcategoria' => $find->idsubcategoria]);
-        $category = Categoria::findOne(['idcategoria' => $subcategoria->idcategoria]);
+        $category=null;
+        if (!isnull($subcategoria)) {
+            $category = Categoria::findOne(['idcategoria' => $subcategoria->idcategoria]);
+        }
         if (is_null($category)) {
             $category = new Categoria();
         }
