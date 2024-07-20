@@ -211,24 +211,19 @@ class ProductoController extends Controller
     {
         $sort = new Sort([
             'attributes' => [
-                'descripcion' => [
-                    'default' => SORT_ASC
-                ],
+                'descripcion' => SORT_ASC,
                 'ascendente' => [
                     'asc' => ['descripcion' => SORT_ASC],
-                    //'desc' => ['first_name' => SORT_DESC, 'last_name' => SORT_DESC],
                     'default' => SORT_ASC,
                     'label' => 'Ascendente',
                 ],
                 'descendente' => [
                     'desc' => ['descripcion' => SORT_DESC],
-                    //'desc' => ['first_name' => SORT_DESC, 'last_name' => SORT_DESC],
                     'default' => SORT_DESC,
                     'label' => 'Descendente',
                 ]
             ],
         ]);
-        //$sort->defaultOrder=['descripcion'=>SORT_ASC];
         $familia = Familia::find()->where(['idfamilia' => $idfamilia])->one();
         $category = $familia->categoria;
         $familias = FamiliaArticulo::find()->where(['idfamilia' => $idfamilia])->all();
@@ -265,13 +260,11 @@ class ProductoController extends Controller
                 'descripcion' => SORT_ASC,
                 'ascendente' => [
                     'asc' => ['descripcion' => SORT_ASC],
-                    //'desc' => ['first_name' => SORT_DESC, 'last_name' => SORT_DESC],
                     'default' => SORT_ASC,
                     'label' => 'Ascendente',
                 ],
                 'descendente' => [
                     'desc' => ['descripcion' => SORT_DESC],
-                    //'desc' => ['first_name' => SORT_DESC, 'last_name' => SORT_DESC],
                     'default' => SORT_DESC,
                     'label' => 'Descendente',
                 ]
