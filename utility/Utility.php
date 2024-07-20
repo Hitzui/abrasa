@@ -29,8 +29,6 @@ class Utility
     public static function articulos(): array
     {
         $query = Articulo::find()
-            ->joinWith('subcategoria')
-            ->select(['articulo.idarticulo','concat(subcategoria.nombre,"-",articulo.descripcion) as descripcion'])
             ->all();
         return ArrayHelper::map($query, 'idarticulo', 'descripcion');
     }
