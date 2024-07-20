@@ -19,8 +19,8 @@ use yii\helpers\Url;
 $this->title = 'ABRASA - Productos';
 
 if ($family !== null) {
-    Url::remember(['producto/find','id'=>$sub->idsubcategoria,'idfamilia'=>$family->idfamilia,'sort'=>'ascendente']);
-    $nombreFamilia = ' / ' . Html::a($family->nombre, ['producto/familia', 'idfamilia' => $family->idfamilia,'sort'=>'ascendente'], ['class' => 'text-warning']);
+    Url::remember(['producto/find','id'=>$sub->idsubcategoria,'idfamilia'=>$family->idfamilia,'sort'=>'asc']);
+    $nombreFamilia = ' / ' . Html::a($family->nombre, ['producto/familia', 'idfamilia' => $family->idfamilia,'sort'=>'asc'], ['class' => 'text-warning']);
 } else {
     Url::remember(['producto/find','id'=>$sub->idsubcategoria,'idfamilia'=>0,'sort'=>'ascendente']);
     $nombreFamilia = "";
@@ -50,8 +50,8 @@ if ($family !== null) {
                             'label' => 'Ordenar..',
                             'dropdown' => [
                                 'items' => [
-                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/familia','idfamilia'=>$family->idfamilia,'sort'=>'asc'])],
-                                    ['label' => 'Descendente', 'url' => Url::to(['producto/familia','idfamilia'=>$family->idfamilia,'sort'=>'desc'])],
+                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/familia','idfamilia'=>$sub->idsubcategoria,'sort'=>'asc'])],
+                                    ['label' => 'Descendente', 'url' => Url::to(['producto/familia','idfamilia'=>$sub->idsubcategoria,'sort'=>'desc'])],
                                 ],
                             ],
                             'buttonOptions' => ['class' => 'btn-outline-success text-white']

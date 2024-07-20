@@ -6,6 +6,7 @@ use app\models\Categoria;
 use kartik\bs5dropdown\ButtonDropdown;
 use yii\data\Sort;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /** @var Categoria $cat */
 /** @var Sort $sort */
@@ -300,8 +301,8 @@ $this->registerCss($css);
                             'label' => 'Ordenar..',
                             'dropdown' => [
                                 'items' => [
-                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/familia','idfamilia'=>$family->idfamilia,'sort'=>'asc'])],
-                                    ['label' => 'Descendente', 'url' => Url::to(['producto/familia','idfamilia'=>$family->idfamilia,'sort'=>'desc'])],
+                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/categoria','id'=>$cat->idcategoria,'sort'=>'asc'])],
+                                    ['label' => 'Descendente', 'url' => Url::to(['producto/categoria','id'=>$cat->idcategoria,'sort'=>'desc'])],
                                 ],
                             ],
                             'buttonOptions' => ['class' => 'btn-outline-success text-white']
