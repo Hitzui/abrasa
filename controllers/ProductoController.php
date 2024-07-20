@@ -248,21 +248,8 @@ class ProductoController extends Controller
 
     public function actionFind($id, $idfamilia)
     {
-        $sort = new Sort([
-            'attributes' => [
-                'descripcion' => SORT_ASC,
-                'ascendente' => [
-                    'asc' => ['descripcion' => SORT_ASC],
-                    'default' => SORT_ASC,
-                    'label' => 'Ascendente',
-                ],
-                'descendente' => [
-                    'desc' => ['descripcion' => SORT_DESC],
-                    'default' => SORT_DESC,
-                    'label' => 'Descendente',
-                ]
-            ],
-        ]);
+        $request = Yii::$app->request;
+        $sort=$request->get('sort');
         $familias = FamiliaArticulo::find()->where(['idsubcategoria' => $id, 'idfamilia' => $idfamilia])->all();
         if (count($familias) <= 0) {
             $ids = Detaarticulo::findAll(['idsubcategoria' => $id]);
@@ -275,7 +262,12 @@ class ProductoController extends Controller
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
         $pages->defaultPageSize = $this->pageSize;
-        $model = $query->orderBy($sort->orders)
+        if ($sort=='asc'){
+            $query->orderBy(['descripcion'=>SORT_ASC]);
+        }else{
+            $query->orderBy(['descripcion'=>SORT_DESC]);
+        }
+        $model = $query
             ->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
@@ -308,30 +300,8 @@ class ProductoController extends Controller
 
     public function actionCategoria($id)
     {
-        $sort = new Sort([
-            'attributes' => [
-                'descripcion',
-                'ascendente' => [
-                    'asc' => ['descripcion' => SORT_ASC],
-                    //'desc' => ['first_name' => SORT_DESC, 'last_name' => SORT_DESC],
-                    'default' => SORT_ASC,
-                    'label' => 'Ascendente',
-                ],
-                'descendente' => [
-                    'desc' => ['descripcion' => SORT_DESC],
-                    //'desc' => ['first_name' => SORT_DESC, 'last_name' => SORT_DESC],
-                    'default' => SORT_DESC,
-                    'label' => 'Descendente',
-                ]
-            ],
-        ]);
-        //$sort->defaultOrder=['descripcion'=>SORT_ASC];
-        /*
-         select * from familia_articulo far
-         join subcategoria sub on far.idsubcategoria = sub.idsubcategoria
-         join categoria cat on sub.idcategoria=sub.idcategoria
-         where cat.idcategoria=22
-         */
+        $request = Yii::$app->request;
+        $sort=$request->get('sort');
         $filter = FamiliaArticulo::find()
             ->leftJoin('subcategoria','familia_articulo.idsubcategoria = subcategoria.idsubcategoria')
             ->leftJoin('categoria', 'subcategoria.idcategoria = categoria.idcategoria')
@@ -341,8 +311,12 @@ class ProductoController extends Controller
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
         $pages->defaultPageSize = $this->pageSize;
+        if ($sort=='asc'){
+            $query->orderBy(['descripcion'=>SORT_ASC]);
+        }else{
+            $query->orderBy(['descripcion'=>SORT_DESC]);
+        }
         $model = $query->offset($pages->offset)
-            ->orderBy($sort->orders)
             ->limit($pages->limit)
             ->all();
         //$model = Articulo::findAll(['idsubcategoria'=>$id]);
