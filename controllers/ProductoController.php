@@ -12,6 +12,7 @@ use app\models\Proveedor;
 use app\models\Detaproveedor;
 use app\models\Stores;
 use app\models\Subcategoria;
+use Yii;
 use yii\data\Pagination;
 use yii\data\Sort;
 use yii\filters\AccessControl;
@@ -209,25 +210,18 @@ class ProductoController extends Controller
 
     public function actionFamilia($idfamilia)
     {
-        $sort = new Sort([
-            'attributes' => [
-                'ascendente' => [
-                    'asc' => ['descripcion' => SORT_ASC],
-                    'default' => SORT_ASC,
-                    'label' => 'Ascendente',
-                ],
-                'descendente' => [
-                    'desc' => ['descripcion' => SORT_DESC],
-                    'default' => SORT_DESC,
-                    'label' => 'Descendente',
-                ]
-            ],
-        ]);
+        $request = Yii::$app->request;
+        $sort=$request->get('sort');
         $familia = Familia::find()->where(['idfamilia' => $idfamilia])->one();
         $category = $familia->categoria;
         $familias = FamiliaArticulo::find()->where(['idfamilia' => $idfamilia])->all();
         $categorias = Categoria::find()->all();
-        $query = Articulo::find()->where(['idarticulo' => $familias])->orderBy($sort->orders);
+        $query = Articulo::find()->where(['idarticulo' => $familias]);
+        if ($sort=='asc'){
+            $query->orderBy(['descripcion'=>SORT_ASC]);
+        }else{
+            $query->orderBy(['descripcion'=>SORT_DESC]);
+        }
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
         $pages->defaultPageSize = $this->pageSize;

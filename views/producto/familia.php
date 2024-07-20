@@ -7,6 +7,7 @@
 
 use kartik\bs5dropdown\ButtonDropdown;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'ABRASA - Productos';
 ?>
@@ -31,8 +32,8 @@ $this->title = 'ABRASA - Productos';
                             'label' => 'Ordenar..',
                             'dropdown' => [
                                 'items' => [
-                                    ['label' => 'Ascendente', 'url' => $sort->createUrl('ascendente')],
-                                    ['label' => 'Descendente', 'url' => $sort->createUrl('descendente')],
+                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/familia','idfamilia'=>$family->idfamilia,'sort'=>'asc'])],
+                                    ['label' => 'Descendente', 'url' => Url::to(['producto/familia','idfamilia'=>$family->idfamilia,'sort'=>'desc'])],
                                 ],
                             ],
                             'buttonOptions' => ['class' => 'btn-outline-success text-white']
