@@ -42,14 +42,6 @@ $categorias = ArrayHelper::map(Categoria::find()->all(), 'idcategoria', 'nombre'
             'url'=>Url::to(['/subcategoria/subcat'])
         ]
     ]);
-    $sbcategorias = ArrayHelper::map(Subcategoria::find()->all(), 'idsubcategoria', 'nombre');
-    echo $form->field($model, 'idsubcategoria')->widget(Select2::class, [
-        'data' => $sbcategorias,
-        'options' => ['placeholder' => 'Seleccione una subcategoria'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]);
     ?>
 
     <?php

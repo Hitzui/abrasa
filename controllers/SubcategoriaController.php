@@ -176,16 +176,17 @@ class SubcategoriaController extends Controller
             $parents = $_POST['depdrop_parents'];
             if ($parents != null) {
                 $cat_id = $parents[0];
-                $out = ArrayHelper::map(Subcategoria::find()->where(['idcategoria'=>$cat_id])->all(), 'idsubcategoria', 'nombre');;
-                // the getSubCatList function will query the database based on the
-                // cat_id and return an array like below:
-                // [
-                //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
-                //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
-                // ]
-                return ['output'=>$out, 'selected'=>''];
+                $out = Subcategoria::find()->where(['idcategoria'=>$cat_id])->select('idsubcategoria, nombre')->all();
+                // Mapear los datos para retornar solo 'id' y 'name'
+                $result = array_map(function($cat) {
+                    return [
+                        'id' => $cat->idsubcategoria,
+                        'name' => $cat->nombre
+                    ];
+                }, $out);
+                return ['output'=>$result, 'selected'=>''];
             }
         }
-        return ['output'=>'', 'selected'=>''];
+        return ['output'=>$out, 'selected'=>''];
     }
 }
