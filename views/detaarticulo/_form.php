@@ -55,15 +55,16 @@ if ($id > 0) {
             </label>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label for="idsubcategoria">
-                Seleccione Subcategoria
-                <select name="Detaarticulo[idsubcategoria]" class="data-subcategoria custom-select" id="idsubcategoria"
-                        style="min-width: 600px;"></select>
-            </label>
-        </div>
-    </div>
+    <?php
+    $sbcategorias = ArrayHelper::map(Subcategoria::find()->all(), 'idsubcategoria', 'nombre');
+    echo $form->field($model, 'idsubcategoria')->widget(Select2::class, [
+        'data' => $sbcategorias,
+        'options' => ['placeholder' => 'Seleccione una subcategoria'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
 
     <?php
     $articulos = ArrayHelper::map(Articulo::find()->all(), 'idarticulo', 'descripcion');
