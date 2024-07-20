@@ -211,16 +211,11 @@ class ProductoController extends Controller
     {
         $sort = new Sort([
             'attributes' => [
-                'descripcion' => SORT_ASC,
-                'ascendente' => [
+                'descripcion' => [
                     'asc' => ['descripcion' => SORT_ASC],
-                    'default' => SORT_ASC,
-                    'label' => 'Ascendente',
-                ],
-                'descendente' => [
                     'desc' => ['descripcion' => SORT_DESC],
-                    'default' => SORT_DESC,
-                    'label' => 'Descendente',
+                    'default' => SORT_ASC,
+                    'label' => 'Descripcion',
                 ]
             ],
         ]);
