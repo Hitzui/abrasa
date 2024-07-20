@@ -15,6 +15,7 @@ use Yii;
  */
 class Detaarticulo extends \yii\db\ActiveRecord
 {
+    public $idcategoria;
     /**
      * {@inheritdoc}
      */
@@ -30,7 +31,7 @@ class Detaarticulo extends \yii\db\ActiveRecord
     {
         return [
             [['idsubcategoria', 'idarticulo'], 'required'],
-            [['idsubcategoria'], 'integer'],
+            [['idsubcategoria','idcategoria'], 'integer'],
             [['idarticulo'], 'string', 'max' => 20],
             [['idsubcategoria', 'idarticulo'], 'unique', 'targetAttribute' => ['idsubcategoria', 'idarticulo']],
             [['idsubcategoria'], 'exist', 'skipOnError' => true, 'targetClass' => Subcategoria::class, 'targetAttribute' => ['idsubcategoria' => 'idsubcategoria']],
@@ -44,8 +45,9 @@ class Detaarticulo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idsubcategoria' => 'Idsubcategoria',
-            'idarticulo' => 'Idarticulo',
+            'idcategoria'=>'Id Categoria',
+            'idsubcategoria' => 'Id Sub-categoria',
+            'idarticulo' => 'Id-Articulo',
         ];
     }
 
