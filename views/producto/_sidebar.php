@@ -48,7 +48,7 @@ Yii::$app->view->registerCss($css);
                 <h5 class="mb-0">
 <!-- Se ocultó la siguiente propiedad data-bs-toggle="collapse"-->
                     <a
-                       href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria])?>"
+                       href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria,'sort' => 'asc'])?>"
                        aria-expanded="true" aria-controls="collapse-<?= $categoria->idcategoria ?>"
                        class="text-white">
                         <?= $categoria->nombre ?>
@@ -86,12 +86,12 @@ Yii::$app->view->registerCss($css);
                                         <?php
                                         if ($subcategoria->idsubcategoria == 63) {
                                             ?>
-                                            <a href="<?= Url::to(['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => 0]) ?>">
+                                            <a href="<?= Url::to(['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => 0,'sort' => 'asc']) ?>">
                                                 <?= $subcategoria->nombre ?>
                                             </a>
                                             <?php
                                         } else { ?>
-                                            <a href="<?= Url::to(['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => 0, 'sort' => 'ascendente']) ?>">
+                                            <a href="<?= Url::to(['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => 0, 'sort' => 'asc']) ?>">
                                                 <?= $subcategoria->nombre ?>
                                             </a>
                                             <?php
