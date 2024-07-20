@@ -76,7 +76,7 @@ class FamiliaArticuloSearch extends FamiliaArticulo
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idfamilia' => $this->idfamilia,
+            'familia.idfamilia' => $this->idfamilia,
             'idsubcategoria' => $this->idsubcategoria,
         ]);
 
