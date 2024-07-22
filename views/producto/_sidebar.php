@@ -108,7 +108,7 @@ Yii::$app->view->registerCss($css);
                     foreach ($familias as $item):
                         Yii::$app->view->registerJs('
                         $("#familia-' . $item->idfamilia . '").on("shown.bs.collapse", function () {
-                        window.location.href = "' . Url::to(['producto/familia', 'idfamilia' => $item->idfamilia, 'sort' => 'ascendente']) . '";
+                        window.location.href = "' . Url::to(['producto/familia', 'idfamilia' => $item->idfamilia, 'sort' => 'asc']) . '";
                         });
                         ');
                         ?>
@@ -140,7 +140,7 @@ Yii::$app->view->registerCss($css);
                                             }
                                             ?>
                                             <li class="list-group-item <?= $active ?>">
-                                                <?= Html::a($subcategoria->nombre, ['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => $item->idfamilia, 'sort' => 'ascendente'], ['class' => 'profile-link']) ?>
+                                                <?= Html::a($subcategoria->nombre, ['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => $item->idfamilia, 'sort' => 'asc'], ['class' => 'profile-link']) ?>
                                             </li>
                                         <?php
                                         endforeach;

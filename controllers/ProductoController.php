@@ -217,15 +217,11 @@ class ProductoController extends Controller
         $familias = FamiliaArticulo::find()->where(['idfamilia' => $idfamilia])->all();
         $categorias = Categoria::find()->all();
         $query = Articulo::find()->where(['idarticulo' => $familias]);
-        if ($sort=='asc'){
-            $query->orderBy(['descripcion'=>SORT_ASC]);
-        }else{
-            $query->orderBy(['descripcion'=>SORT_DESC]);
-        }
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
         $pages->defaultPageSize = $this->pageSize;
         $model = $query->offset($pages->offset)
+            ->orderBy(['descripcion'=> $sort=='asc' ? SORT_ASC : SORT_DESC])
             ->limit($pages->limit)
             ->all();
         if ($model === null) {
@@ -262,12 +258,8 @@ class ProductoController extends Controller
         $count = $query->count();
         $pages = new Pagination(['totalCount' => $count]);
         $pages->defaultPageSize = $this->pageSize;
-        if ($sort=='asc'){
-            $query->orderBy(['descripcion'=>SORT_ASC]);
-        }else{
-            $query->orderBy(['descripcion'=>SORT_DESC]);
-        }
         $model = $query
+            ->orderBy(['descripcion'=> $sort=='asc' ? SORT_ASC : SORT_DESC])
             ->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
