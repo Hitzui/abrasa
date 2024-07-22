@@ -41,7 +41,7 @@ if ($family !== null) {
             <div class="header_familia" style="background-color: #42754e">
                 <div class="row">
                     <div class="col-md-9">
-                        Categoria: <?= Html::a($cat->nombre, ['producto/categoria', 'id' => $cat->idcategoria,'sort'=>'ascendente'], ['class' => 'text-warning']) ?><?= $nombreFamilia ?>
+                        Categoria: <?= Html::a($cat->nombre, ['producto/categoria', 'id' => $cat->idcategoria,'sort'=>'asc'], ['class' => 'text-warning']) ?><?= $nombreFamilia ?>
                         / <?= $sub->nombre ?>
                     </div>
                     <div class="col-md-3">

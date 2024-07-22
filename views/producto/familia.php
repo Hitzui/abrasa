@@ -22,7 +22,7 @@ $this->title = 'ABRASA - Productos';
                 <div class="row">
                     <div class="col-md-9">
                         Categoria: <?=
-                        Html::a($category->nombre, ['producto/categoria', 'id' => $category->idcategoria,'sort'=>'ascendente'], ['class' => 'text-warning']) ?>
+                        Html::a($category->nombre, ['producto/categoria', 'id' => $category->idcategoria,'sort'=>'asc'], ['class' => 'text-warning']) ?>
                         / <?= $family->nombre ?>
                     </div>
                     <div class="col-md-3">
