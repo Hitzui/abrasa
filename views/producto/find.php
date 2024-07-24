@@ -50,8 +50,8 @@ if ($family !== null) {
                             'label' => 'Ordenar..',
                             'dropdown' => [
                                 'items' => [
-                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/familia','idfamilia'=>$sub->idsubcategoria,'sort'=>'asc'])],
-                                    ['label' => 'Descendente', 'url' => Url::to(['producto/familia','idfamilia'=>$sub->idsubcategoria,'sort'=>'desc'])],
+                                    ['label' => 'Ascendente', 'url' => Url::to(['producto/find','id'=>$sub->idsubcategoria,'idfamilia'=>$family->idfamilia,'sort'=>'asc'])],
+                                    ['label' => 'Descendente', 'url' => Url::to(['producto/find','id'=>$sub->idsubcategoria,'idfamilia'=>$family->idfamilia,'sort'=>'desc'])],
                                 ],
                             ],
                             'buttonOptions' => ['class' => 'btn-outline-success text-white']
