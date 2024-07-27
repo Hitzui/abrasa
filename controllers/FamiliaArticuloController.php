@@ -15,6 +15,7 @@ use app\models\Articulo;
 use app\models\Familia;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
+use yii\web\Response;
 
 /**
  * FamiliaArticuloController implements the CRUD actions for FamiliaArticulo model.
@@ -185,5 +186,27 @@ class FamiliaArticuloController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionSubcat() {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $id = $parents[0];
+                $deta = Detafamilia::find()->where(['idfamilia'=>$id])->all();
+                $out = Subcategoria::find()->where(['idcategoria'=>$deta])->select('idsubcategoria, nombre')->all();
+                // Mapear los datos para retornar solo 'id' y 'name'
+                $result = array_map(function($cat) {
+                    return [
+                        'id' => $cat->idsubcategoria,
+                        'name' => $cat->nombre
+                    ];
+                }, $out);
+                return ['output'=>$result, 'selected'=>''];
+            }
+        }
+        return ['output'=>$out, 'selected'=>''];
     }
 }
