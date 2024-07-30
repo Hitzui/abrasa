@@ -352,7 +352,7 @@ class ProductoController extends Controller
         $detaFamilia = FamiliaArticulo::find()->where(['idarticulo' => $find->idarticulo])->asArray()->all();
         $presentaciones = Presentacion::find()->where(['idarticulo' => $idarticulo])->all();
         if (count($detaFamilia) > 0) {
-            $familias = Familia::find()->where(['idfamilia' => $detaFamilia])->asArray()->all();
+            $familias = Familia::find()->where(['idfamilia' => $detaFamilia])->all();
             $family = Familia::find()->where(['idfamilia' => $detaFamilia])->one();
             $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
             $subcategoria = Subcategoria::findOne(['idsubcategoria' => $familiaArticulo->idsubcategoria]);
