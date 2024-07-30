@@ -16,7 +16,7 @@ use yii\web\View;
 /** @var FamiliaArticulo $detaFamilia */
 /** @var Subcategoria $subcategoria */
 /** @var Familia $family */
-/** @var Familia $familias */
+/** @var array $familias */
 /** @var Categoria $category */
 /** @var Articulo $find */
 /** @var Presentacion $presentaciones */
