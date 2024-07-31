@@ -404,7 +404,7 @@ class ArticuloController extends Controller
     {
         $detaprov = Detaproveedor::find()->where(['idproveedor' => $idproveedor, 'idarticulo' => $idarticulo])->one();
         $detaprov->delete();
-        return $this->redirect(['index']);
+        return $this->redirect(['proveedores']);
     }
 
     /**

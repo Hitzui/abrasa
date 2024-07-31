@@ -1,7 +1,7 @@
 <?php
 
+use kartik\detail\DetailView;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $articulo \app\models\Articulo */
@@ -52,10 +52,10 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <!-- <button type="button" class="btn btn-primary">Aceptar</button> -->
-        <?= Html::a('Aceptar', 
+        <?= Html::a('Aceptar',
                         [
                             'deleteprov', 'idproveedor' => $proveedor->idproveedor,'idarticulo'=>$articulo->idarticulo
-                        ], 
+                        ],
                         [
                             'class' => 'btn btn-primary'
                         ]
@@ -71,9 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							'format'=>'raw',
 							'label'=>'Id Articulo',
 							'attribute'=>'idarticulo',
-							'value'=>function($data){								
-								return Html::a(''.$data->idarticulo,['articulo/update','id'=>$data->idarticulo]);
-							},
+							'value'=> Html::a(''.$articulo->idarticulo,['articulo/update','id'=>$articulo->idarticulo])
 						],
                         'descripcion:ntext',
                         'caracteristicas:ntext',
@@ -88,17 +86,13 @@ $this->params['breadcrumbs'][] = $this->title;
 							'format'=>'raw',
 							'label'=>'Ficha Tecnica',
 							'attribute'=>'ficha',
-							'value'=>function($data){								
-								return Html::a(''.$data->ficha,['/'.$data->ficha]);
-							},
+							'value'=> Html::a(''.$articulo->ficha,['/'.$articulo->ficha])
 						],
 						[
 							'format'=>'raw',
 							'label'=>'Hoja de Seguridad',
 							'attribute'=>'hoja',
-							'value'=>function($data){								
-								return Html::a(''.$data->hoja,['/'.$data->hoja]);
-							},
+							'value'=>Html::a(''.$articulo->hoja,['/'.$articulo->hoja])
 						],
                     ],
                 ]) ?>
