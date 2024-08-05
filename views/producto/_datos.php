@@ -26,7 +26,7 @@ use yii\widgets\LinkPager;
                     <a href="<?= Url::base(true) ?>/<?= $articulo->rutaimg ?>"
                        data-toggle="lightbox" data-caption="<?= $articulo->descripcion ?>"
                        data-gallery="articulo-gallery"
-                       style="display: flex; justify-content: center;align-items: center;">
+                       style="display: flex; justify-content: center;align-items: center;margin-top:20px">
                         <div>
                             <img src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>" style="height: 350px"/>
                         </div>
