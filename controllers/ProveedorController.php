@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Detaproveedor;
 use Yii;
 use app\models\Proveedor;
 use app\models\ProveedorSearch;
@@ -133,9 +134,13 @@ class ProveedorController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        try {
+            Detaproveedor::deleteAll('idproveedor =:id',[':id'=>$id]);
+            $this->findModel($id)->delete();
+            return $this->redirect(['index']);
+        }catch (\Exception $exception){
+            print $exception->getMessage();
+        }
     }
 
     /**
