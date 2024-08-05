@@ -517,7 +517,7 @@ try {
                     }
                     ?>
                     <div class="swiper-slide">
-                        <div class="min_producto_2 rounded shadow">
+                        <div class="min_producto_2 rounded shadow" style="background-color: white">
                             <div class="nombre_producto text-center rounded shadow" style="min-height: 50px">
                                 <span><?= $articulo->descripcion ?></span>
                             </div>
