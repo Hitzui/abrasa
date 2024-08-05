@@ -54,7 +54,7 @@ $css = <<<CSS
 .min_producto_2{
     margin: 5px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.16);
-    background-color: #ededed;
+    background-color: white;
     position: relative;
 }
 .min_producto_2 .box_oferta{
@@ -278,7 +278,7 @@ $css = <<<CSS
 background-color: #036348 !important;
 }
 CSS;
-$this->registerCss($css);
+//$this->registerCss($css);
 
 ?>
 <p>&nbsp;</p>

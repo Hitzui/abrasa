@@ -28,7 +28,7 @@ use yii\widgets\LinkPager;
                        data-gallery="articulo-gallery"
                        style="display: flex; justify-content: center;align-items: center;margin-top:20px">
                         <div>
-                            <img src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>" style="height: 350px"/>
+                            <img class="img-fluid" src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>" style="height: 350px"/>
                         </div>
                     </a>
                     <div style="text-align: right;overflow: hidden;padding:5px">
