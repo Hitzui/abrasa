@@ -26,13 +26,11 @@ use yii\widgets\LinkPager;
                     <a href="<?= Url::base(true) ?>/<?= $articulo->rutaimg ?>"
                        data-toggle="lightbox" data-caption="<?= $articulo->descripcion ?>"
                        data-gallery="articulo-gallery"
-                       style="display: flex; justify-content: center;align-items: center; height: 100%">
+                       style="display: flex; justify-content: center;align-items: center;">
                         <div>
-                            <img src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>"/>
+                            <img src="/<?= $articulo->rutaimg ?>" alt="<?= $articulo->descripcion ?>" style="height: 350px"/>
                         </div>
                     </a>
-
-                    <!--</a>-->
                     <div style="text-align: right;overflow: hidden;padding:5px">
                         <a href="<?= Url::to(["producto/view", 'idarticulo' => $articulo->idarticulo]) ?>">
                             <div class="btn_ver_producto">
