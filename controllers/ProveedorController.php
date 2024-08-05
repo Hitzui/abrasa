@@ -137,10 +137,10 @@ class ProveedorController extends Controller
         try {
             Detaproveedor::deleteAll('idproveedor =:id',[':id'=>$id]);
             $this->findModel($id)->delete();
-            return $this->redirect(['index']);
-        }catch (\Exception $exception){
-            print $exception->getMessage();
+        } catch (\Throwable $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
         }
+        return $this->redirect(['index']);
     }
 
     /**
