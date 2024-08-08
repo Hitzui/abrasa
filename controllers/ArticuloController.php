@@ -323,17 +323,19 @@ class ArticuloController extends Controller
         $connection = Yii::$app->db;
         $transaction = $connection->beginTransaction();
         try {
+            $queryFamiliaArticulo = FamiliaArticulo::find()->where(['idarticulo' => $id]);
+            $fam = $queryFamiliaArticulo->all();
+            $countFamiliaArticulo = $queryFamiliaArticulo->count();
+            if (!is_null($fam) || $countFamiliaArticulo > 0) {
+                FamiliaArticulo::deleteAll(['idarticulo' => $fam]);
+            }
             $deta = Detaproveedor::findOne(['idarticulo' => $id]);
-            if ($deta !== null) {
+            if (!is_null($deta)) {
                 $deta->delete();
             }
             $sub = Detaarticulo::findOne(['idarticulo' => $id]);
-            if ($sub !== null) {
+            if (!is_null($sub)) {
                 $sub->delete();
-            }
-            $fam = FamiliaArticulo::find()->where(['idarticulo' => $id])->all();
-            if ($fam !== null || count($fam) > 0) {
-                FamiliaArticulo::deleteAll(['idarticulo' => $fam]);
             }
             $this->findModel($id)->delete();
             $transaction->commit();
