@@ -12,6 +12,7 @@ use app\models\Proveedor;
 use app\models\Detaproveedor;
 use app\models\Stores;
 use app\models\Subcategoria;
+use Exception;
 use Yii;
 use yii\data\Pagination;
 use yii\data\Sort;
@@ -335,48 +336,52 @@ class ProductoController extends Controller
 
     public function actionView($idarticulo)
     {
-        $find = Articulo::findOne(["idarticulo" => $idarticulo]);
-        $categorias = Categoria::find()->all();
-        $familiaArticulo = FamiliaArticulo::find()->where(['idarticulo' => $idarticulo])->one();
-        $deta = Detaproveedor::find()->where(['idarticulo' => $find->idarticulo])->all();
-        $family = Familia::find()->where(['idfamilia' => $familiaArticulo->idfamilia])->one();
-        $ids = array();
-        $subcategoria = Subcategoria::findOne(['idsubcategoria' => $familiaArticulo->idsubcategoria]);
-        $category=null;
-        if (!is_null($family)) {
-            $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
-        }
-        if (is_null($category)) {
-            $category = new Categoria();
-        }
-        $detaFamilia = FamiliaArticulo::find()->where(['idarticulo' => $find->idarticulo])->asArray()->all();
-        $presentaciones = Presentacion::find()->where(['idarticulo' => $idarticulo])->all();
-        if (count($detaFamilia) > 0) {
-            $familias = Familia::find()->where(['idfamilia' => $detaFamilia])->all();
-            $family = Familia::find()->where(['idfamilia' => $detaFamilia])->one();
-            $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
+        try{
+            $find = Articulo::findOne(["idarticulo" => $idarticulo]);
+            $categorias = Categoria::find()->all();
+            $familiaArticulo = FamiliaArticulo::find()->where(['idarticulo' => $idarticulo])->one();
+            $deta = Detaproveedor::find()->where(['idarticulo' => $find->idarticulo])->all();
+            $family = Familia::find()->where(['idfamilia' => $familiaArticulo->idfamilia])->one();
+            $ids = array();
             $subcategoria = Subcategoria::findOne(['idsubcategoria' => $familiaArticulo->idsubcategoria]);
-        } else {
-            $family = new Familia();
-            $familias = null;
+            $category=null;
+            if (!is_null($family)) {
+                $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
+            }
+            if (is_null($category)) {
+                $category = new Categoria();
+            }
+            $detaFamilia = FamiliaArticulo::find()->where(['idarticulo' => $find->idarticulo])->asArray()->all();
+            $presentaciones = Presentacion::find()->where(['idarticulo' => $idarticulo])->all();
+            if (count($detaFamilia) > 0) {
+                $familias = Familia::find()->where(['idfamilia' => $detaFamilia])->all();
+                $family = Familia::find()->where(['idfamilia' => $detaFamilia])->one();
+                $category = Categoria::findOne(['idcategoria' => $family->idcategoria]);
+                $subcategoria = Subcategoria::findOne(['idsubcategoria' => $familiaArticulo->idsubcategoria]);
+            } else {
+                $family = new Familia();
+                $familias = null;
+            }
+            foreach ($deta as $d) {
+                $ids[] = $d->idproveedor;
+            }
+            $proveedor = Proveedor::findAll($ids);
+            return $this->render("view", [
+                'find' => $find,
+                'proveedor' => $proveedor,
+                'categorias' => $categorias,
+                'category' => $category,
+                'cat' => $category,
+                'subcategoria' => $subcategoria,
+                'sub' => $subcategoria,
+                'detaFamilia' => $detaFamilia,
+                'family' => $family,
+                'familias' => $familias,
+                'presentaciones' => $presentaciones,
+            ]);
+        }catch(Exception $e){
+            return $this->redirect(['producto/index']);
         }
-        foreach ($deta as $d) {
-            $ids[] = $d->idproveedor;
-        }
-        $proveedor = Proveedor::findAll($ids);
-        return $this->render("view", [
-            'find' => $find,
-            'proveedor' => $proveedor,
-            'categorias' => $categorias,
-            'category' => $category,
-            'cat' => $category,
-            'subcategoria' => $subcategoria,
-            'sub' => $subcategoria,
-            'detaFamilia' => $detaFamilia,
-            'family' => $family,
-            'familias' => $familias,
-            'presentaciones' => $presentaciones,
-        ]);
     }
 
     public function actionProveedor($id = null)
