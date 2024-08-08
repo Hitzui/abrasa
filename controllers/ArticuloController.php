@@ -7,6 +7,7 @@ use app\models\Detaarticulo;
 use app\models\Detacolor;
 use app\models\Familia;
 use app\models\FamiliaArticulo;
+use app\models\Presentacion;
 use app\models\Subcategoria;
 use Exception;
 use Yii;
@@ -337,12 +338,15 @@ class ArticuloController extends Controller
             if (!is_null($sub)) {
                 $sub->delete();
             }
+            Presentacion::deleteAll(['idarticulo' => $id]);
             $this->findModel($id)->delete();
             $transaction->commit();
+            return $this->redirect(['index']);
         } catch (Exception $e) {
             $transaction->rollBack();
+            return $e->getMessage();
         }
-        return $this->redirect(['index']);
+        //return $this->redirect(['index']);
     }
 
     /**
