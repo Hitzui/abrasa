@@ -187,7 +187,7 @@ if ($familias !== null) {
                                 </ul>
                             </div>
                         </section>
-                        <a href="<?= Url::previous() ?>" style="font-size: 20px;">
+                        <a href="#" onclick="window.history.back(); return false;" style="font-size: 20px;">
                             <i class="fas fa-long-arrow-alt-left"></i> Regresar
                         </a>
                     </div>
@@ -198,7 +198,7 @@ if ($familias !== null) {
                                     <h2><strong><?= Html::decode($find->descripcion) ?></strong></h2>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href="<?= Url::previous() ?>">Volver atras</a>
+                                    <a href="#" onclick="window.history.back(); return false;">Volver atras</a>
                                 </div>
                             </div>
                         </div>
