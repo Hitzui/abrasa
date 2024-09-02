@@ -6,6 +6,7 @@ use app\models\Noticias;
 
 
 $rows = Noticias::find()
+    ->orderBy(['fecha'=>SORT_DESC])
     ->limit(10)
     ->all();
 ?>
