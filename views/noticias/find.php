@@ -133,7 +133,7 @@ function getUrlType($url)
                                                 Your browser does not support the video tag.
                                             </video>
                                         <?php } else if ($extension == 'Imagen') { ?>
-                                            <img src="<?= $path ?>" alt="Noticias ABRASA"/>
+                                            <img src="<?= Url::base(true).$path ?>" alt="Noticias ABRASA"/>
                                         <?php } else { ?>
                                             <div class="contenedor-responsivo">
                                                 <iframe class="mi-iframe"
