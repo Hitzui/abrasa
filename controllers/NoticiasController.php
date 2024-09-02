@@ -116,7 +116,7 @@ class NoticiasController extends Controller
     public function actionIndex(): string
     {
         $this->layout = 'main';
-        $noticias = Noticias::find()->all();
+        $noticias = Noticias::find()->orderBy(['fecha'=>SORT_DESC])->limit(10)->all();
         $categoriaNoticias = Catnoticias::find()->all();
         return $this->render('index', [
             'noticias' => $noticias,

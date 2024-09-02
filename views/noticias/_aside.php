@@ -44,37 +44,37 @@ $rows = Noticias::find()
                                 <!--thumbnail-->
                                 <div class="ratio_110-77 image-wrapper">
                                     <a href="<?= Url::to(['noticias/find', 'id' => $noticia->idnoticias]) ?>">
-                                       <?php $imagen = "";
+                                        <?php $imagen = "";
                                         if (strlen($noticia->imagen) === 0) {
-                                        $imagen = Url::base(true) . '/assets/img/logo.png';
+                                            $imagen = Url::base(true) . '/assets/img/logo.png';
                                         } else {
-                                        $imagen = $noticia->imagen;
+                                            $imagen = $noticia->imagen;
                                         }
                                         $extension = getUrlType($imagen);
-                                            if ($extension == 'Video') { ?>
+                                        if ($extension == 'Video') { ?>
                                             <video width="100%" height="500px" autoplay muted loop
                                                    style="width: 100%; height: auto">
                                                 <source src="<?= $imagen ?>" type="video/mp4" controls="false">
                                                 Your browser does not support the video tag.
                                             </video>
-                                            <?php } else if ($extension == 'Imagen') {?>
-                                                <img width="110" height="77" src="<?=$noticia->imagen ?>"
-                                                     class="img-fluid lazy wp-post-image loaded"
-                                                     alt="Abrasa noticia" loading="lazy"
-                                                     data-src="<?= $noticia->imagen ?>"
-                                                     sizes="(max-width: 110px) 100vw, 110px"
-                                                     data-was-processed="true">
-                                            <?php } else { ?>
-                                                    <iframe
-                                                            style="height: 80px; width: 100%;"
-                                                            src="<?= $imagen ?>"
-                                                            title="Videos de Abrasa Nicaragua" frameborder="0"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                            referrerpolicy="strict-origin-when-cross-origin"
-                                                            allowfullscreen></iframe>
-                                                <?php
-                                            }
-                                            ?>
+                                        <?php } else if ($extension == 'Imagen') { ?>
+                                            <img width="110" height="77" src="<?= $noticia->imagen ?>"
+                                                 class="img-fluid lazy wp-post-image loaded"
+                                                 alt="Abrasa noticia" loading="lazy"
+                                                 data-src="<?= $noticia->imagen ?>"
+                                                 sizes="(max-width: 110px) 100vw, 110px"
+                                                 data-was-processed="true">
+                                        <?php } else { ?>
+                                            <iframe
+                                                    style="height: 80px; width: 100%;"
+                                                    src="<?= $imagen ?>"
+                                                    title="Videos de Abrasa Nicaragua" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin"
+                                                    allowfullscreen></iframe>
+                                            <?php
+                                        }
+                                        ?>
                                         <!-- post type -->
                                     </a>
                                 </div>

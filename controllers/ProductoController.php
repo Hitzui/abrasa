@@ -351,7 +351,7 @@ class ProductoController extends Controller
             if (is_null($category)) {
                 $category = new Categoria();
             }
-            $detaFamilia = FamiliaArticulo::find()->where(['idarticulo' => $find->idarticulo])->asArray()->all();
+            $detaFamilia = FamiliaArticulo::find()->where(['idarticulo' => $find->idarticulo])->all();
             $presentaciones = Presentacion::find()->where(['idarticulo' => $idarticulo])->all();
             if (count($detaFamilia) > 0) {
                 $familias = Familia::find()->where(['idfamilia' => $detaFamilia])->all();
