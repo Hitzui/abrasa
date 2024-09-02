@@ -1,5 +1,6 @@
 <?php
 
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
@@ -10,7 +11,13 @@ use yii\widgets\DetailView;
 /* @var $imagen app\models\Imagenes */
 $this->title = 'ABRASA - EVENTOS';
 
-$this->registerCssFile('/assets/css/noticias.css');
+try {
+    $this->registerCssFile(Url::base(true) . '/assets/css/noticias.css');
+    $this->registerJsFile(Url::base(true) . '/assets/js/lodash.min.js');
+    $this->registerJsFile(Url::base(true) . '/assets/vendor/bootstrap/js/bootstrap.bundle.js');
+} catch (InvalidConfigException $e) {
+    echo $e->getMessage();
+}
 $css = <<<CSS
 .contenedor-responsivo {
     position: relative;
