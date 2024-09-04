@@ -112,14 +112,15 @@ function getUrlType($url)
                 <div class="entry-content post-content">
                     <figure class="image-single-wrapper">
                         <div id="carouselImagenes" class="carousel slide" data-bs-ride="carousel">
-                            <ol class="carousel-indicators">
+                            <div class="carousel-indicators">
                                 <?php
-                                foreach ($imagenes as $i => $imagen) { ?>
-                                    <li data-target="#carouselImagenes" data-slide-to="<?= $i ?>"></li>
-                                    <?php
+                                foreach ($imagenes as $i => $imagen) {
+                                ?>
+                                    <button type="button" data-bs-target="#carouselImagenes" data-bs-slide-to="<?= $i ?>" class="<?= ($i==0) ? 'active': '' ?>" aria-current="true" aria-label="Slide <?= $i ?>"></button>
+                                <?php
                                 }
                                 ?>
-                            </ol>
+                            </div>
                             <div class="carousel-inner">
                                 <?php
                                 foreach ($imagenes as $k => $imagen) {
@@ -131,7 +132,7 @@ function getUrlType($url)
                                     }
                                     $extension = getUrlType($path);
                                     ?>
-                                    <div class="carousel-item <?php echo ($k == 0) ? 'active' : '' ?>">
+                                    <div class="carousel-item <?= ($k == 0) ? 'active' : '' ?>">
                                         <?php
                                         if ($extension == 'Video') { ?>
                                             <video width="100%" height="500px" autoplay muted loop
@@ -140,7 +141,7 @@ function getUrlType($url)
                                                 Your browser does not support the video tag.
                                             </video>
                                         <?php } else if ($extension == 'Imagen') { ?>
-                                            <img src="<?= Url::base(true).'/'.$path ?>" alt="Noticias ABRASA"/>
+                                            <img class="d-block w-100" src="<?= Url::base(true).'/'.$path ?>" alt="Noticias ABRASA"/>
                                         <?php } else { ?>
                                             <div class="contenedor-responsivo">
                                                 <iframe class="mi-iframe"
@@ -150,9 +151,7 @@ function getUrlType($url)
                                                         referrerpolicy="strict-origin-when-cross-origin"
                                                         allowfullscreen></iframe>
                                             </div>
-                                            <?php
-                                        }
-                                        ?>
+                                        <?php } ?>
                                     </div>
                                     <?php
                                 }
