@@ -157,14 +157,14 @@ function getUrlType($url)
                                 }
                                 ?>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselImagenes" role="button" data-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagenes" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselImagenes" role="button" data-slide="next">
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselImagenes" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
 
 
