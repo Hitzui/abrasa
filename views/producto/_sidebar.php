@@ -51,7 +51,7 @@ Yii::$app->view->registerCss($css);
                        href="<?= Url::toRoute(['producto/categoria', 'id'=>$categoria->idcategoria,'sort' => 'asc'])?>"
                        aria-expanded="true" aria-controls="collapse-<?= $categoria->idcategoria ?>"
                        class="text-white">
-                        <?= $categoria->nombre ?>
+                        <?= strtoupper($categoria->nombre) ?>
                     </a>
                 </h5>
             </div>
@@ -87,12 +87,12 @@ Yii::$app->view->registerCss($css);
                                         if ($subcategoria->idsubcategoria == 63) {
                                             ?>
                                             <a href="<?= Url::to(['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => 0,'sort' => 'asc']) ?>">
-                                                <?= $subcategoria->nombre ?>
+                                                <?= strtoupper($subcategoria->nombre) ?>
                                             </a>
                                             <?php
                                         } else { ?>
                                             <a href="<?= Url::to(['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => 0, 'sort' => 'asc']) ?>">
-                                                <?= $subcategoria->nombre ?>
+                                                <?= strtoupper($subcategoria->nombre) ?>
                                             </a>
                                             <?php
                                         }
@@ -118,7 +118,7 @@ Yii::$app->view->registerCss($css);
                                     <a class="collapsed text-info" role="button" data-bs-toggle="collapse"
                                        href="#familia-<?= $item->idfamilia ?>"
                                        aria-expanded="false" aria-controls="familia-<?= $item->idfamilia ?>">
-                                        <?= $item->nombre ?>
+                                        <?= strtoupper($item->nombre) ?>
                                     </a>
                                 </h5>
                             </div>
@@ -140,7 +140,7 @@ Yii::$app->view->registerCss($css);
                                             }
                                             ?>
                                             <li class="list-group-item <?= $active ?>">
-                                                <?= Html::a($subcategoria->nombre, ['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => $item->idfamilia, 'sort' => 'asc'], ['class' => 'profile-link']) ?>
+                                                <?= Html::a(strtoupper($subcategoria->nombre), ['producto/find', 'id' => $subcategoria->idsubcategoria, 'idfamilia' => $item->idfamilia, 'sort' => 'asc'], ['class' => 'profile-link']) ?>
                                             </li>
                                         <?php
                                         endforeach;
