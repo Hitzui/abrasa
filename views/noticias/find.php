@@ -12,6 +12,7 @@ use yii\widgets\DetailView;
 $this->title = 'ABRASA - EVENTOS';
 
 try {
+    $this->registerCssFile(Url::base(true) . '/assets/vendor/bootstrap/css/bootstrap.css');
     $this->registerCssFile(Url::base(true) . '/assets/css/noticias.css');
     $this->registerJsFile(Url::base(true) . '/assets/js/lodash.min.js');
     $this->registerJsFile(Url::base(true) . '/assets/vendor/bootstrap/js/bootstrap.bundle.js');
