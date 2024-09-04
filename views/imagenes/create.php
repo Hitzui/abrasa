@@ -7,8 +7,8 @@ use yii\helpers\Html;
 /* @var $noticias array */
 /* @var $multiple boolean */
 
-$this->title = 'Create Imagenes';
-$this->params['breadcrumbs'][] = ['label' => 'Imagenes', 'url' => ['index']];
+$this->title = 'Subir Imagenes';
+$this->params['breadcrumbs'][] = ['label' => '/Imagenes/', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="imagenes-create">

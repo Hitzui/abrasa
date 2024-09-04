@@ -97,6 +97,7 @@ class ImagenesController extends Controller
             try {
                 $files = UploadedFile::getInstances($model, 'imageFiles');
                 if ($model->validate()) {
+                    $idCount =1;
                     if (count($files)>0) {
                         if (!is_dir($this->path . $model->idnoticia)) {
                             mkdir($this->path . $model->idnoticia);
@@ -107,11 +108,15 @@ class ImagenesController extends Controller
                             $img->ruta = $this->path . $model->idnoticia . '/' . $file->baseName . '.' . $file->extension;
                             $img->idnoticia = $model->idnoticia;
                             $img->save(false);
+                            $idCount++;
                         }
                     }else{
                         $model->save(false);
                     }
                     $transaction->commit();
+                    if ($idCount > 1) {
+                        return $this->redirect(['index']);
+                    }
                     return $this->redirect(['view', 'id' => $model->idimagenes]);
                 }
             } catch (\Exception $exception) {
@@ -148,19 +153,21 @@ class ImagenesController extends Controller
         $noticias = ArrayHelper::map(Noticias::find()->all(), 'idnoticias', 'titulo');
         if ($model->load(Yii::$app->request->post())) {
             $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
-            $file = $model->imageFiles[0];
-            if (strlen($file->baseName) >= 1) {
-                if (!file_exists($this->path . $model->idnoticia)) {
-                    mkdir($this->path . $model->idnoticia);
+            if (count($model->imageFiles)>0) {
+                $file = $model->imageFiles[0];
+                if (strlen($file->baseName) >= 1) {
+                    if (!file_exists($this->path . $model->idnoticia)) {
+                        mkdir($this->path . $model->idnoticia);
+                    }
+                    //$model->ruta = $this->path . $model->imageFiles[0]->baseName . '.' . $model->imageFiles[0]->extension;
+                    $model->ruta = $this->path . $model->idnoticia . '/' . $model->imageFiles[0]->baseName . '.' . $model->imageFiles[0]->extension;
+                } else {
+                    $model->ruta = $imagen;
                 }
-                //$model->ruta = $this->path . $model->imageFiles[0]->baseName . '.' . $model->imageFiles[0]->extension;
-                $model->ruta = $this->path . $model->idnoticia . '/' . $model->imageFiles[0]->baseName . '.' . $model->imageFiles[0]->extension;
-            } else {
-                $model->ruta = $imagen;
+                $file->saveAs($this->path . $model->idnoticia . '/' . $model->imageFiles[0]->baseName . '.' . $model->imageFiles[0]->extension);
             }
             $model->save();
-            $file->saveAs($this->path . $model->idnoticia . '/' . $model->imageFiles[0]->baseName . '.' . $model->imageFiles[0]->extension);
-            return $this->redirect(['view', 'id' => $model->idimagenes]);
+            return $this->redirect(['view', 'id' => $id]);
         }
 
         return $this->render('update', ['model' => $model,

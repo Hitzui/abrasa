@@ -1,15 +1,16 @@
 <?php
 
+use kartik\detail\DetailView;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\web\YiiAsset;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Imagenes */
 
-$this->title = $model->idimagenes;
-$this->params['breadcrumbs'][] = ['label' => 'Imagenes', 'url' => ['index']];
+$this->title = 'Imagen: '.$model->idimagenes;
+$this->params['breadcrumbs'][] = ['label' => '/Imagenes/', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
 ?>
 <div class="imagenes-view">
 
@@ -20,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->idimagenes], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Seguro desea elminar la imagen seleccionada?',
                 'method' => 'post',
             ],
         ]) ?>

@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Imagenes';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = '/'.$this->title;
 ?>
 <div class="container-fluid">
     <div class="row">
