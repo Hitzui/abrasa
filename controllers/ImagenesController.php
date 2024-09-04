@@ -98,7 +98,7 @@ class ImagenesController extends Controller
                 $files = UploadedFile::getInstances($model, 'imageFiles');
                 if ($model->validate()) {
                     if (count($files)>0) {
-                        if (!directoryExists($this->path . $model->idnoticia)) {
+                        if (!is_dir($this->path . $model->idnoticia)) {
                             mkdir($this->path . $model->idnoticia);
                         }
                         foreach ($files as $file) {
