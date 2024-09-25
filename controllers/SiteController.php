@@ -72,12 +72,13 @@ class SiteController extends Controller
         $slide = Slide::find()->all();
         $articulos = Articulo::find()->where(['inicio' => true])->orderBy('descripcion')->all();
         //buscamos todas las noticias que tenga como categoria aparecer en la pagina principal
-        $noticias = Catnoticias::find()->where(['principal'=>1])->one();
+        /*$noticias = Catnoticias::find()->where(['principal'=>1])->one();
         if (isset($noticias)){
             $noticias=$noticias->getNoticias()->limit(6)->all();
         }else{
             $noticias=Noticias::find()->limit(6)->all();
-        }
+        }*/
+        $noticias=Noticias::find()->orderBy(['idnoticias'=>SORT_DESC])->limit(6)->all();
         return $this->render('index', [
             'categorias' => $categoria,
             'proveedores' => $proveedores,
