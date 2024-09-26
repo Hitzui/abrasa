@@ -169,10 +169,9 @@ if ($familias !== null) {
                         >
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <li class="splide__slide">
+                                    <li class="splide__slide" data-value="<?= trim($find->descripcion) ?>">
                                         <img src="<?= Url::base(true).'/'. $find->rutaimg ?>"
                                              alt="<?= $find->descripcion ?>"
-                                             data-value="<?= trim($find->descripcion) ?>"
                                              style="max-height: 60px"/>
                                     </li>
                                     <?php

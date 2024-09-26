@@ -1,6 +1,11 @@
 
 document.addEventListener( 'DOMContentLoaded', function () {
-    var main = new Splide( '#main-carousel-view-product', {
+
+} );
+
+$(function () {
+
+    let main = new Splide( '#main-carousel-view-product', {
         type      : 'fade',
         rewind    : true,
         pagination: false,
@@ -8,7 +13,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     } );
 
 
-    var thumbnails = new Splide( '#thumbnail-carousel-view-product', {
+    let thumbnails = new Splide( '#thumbnail-carousel-view-product', {
         fixedWidth  : 100,
         fixedHeight : 60,
         gap         : 10,
@@ -27,9 +32,10 @@ document.addEventListener( 'DOMContentLoaded', function () {
     main.sync( thumbnails );
     main.mount();
     thumbnails.mount();
-} );
 
-$(function () {
+    thumbnails.on( 'move', function (event) {
+        console.log( 'move', event );
+    } );
 
     $('.splide__slide').on('click',function(event) {
         let dataValue = $(this).data("value");
