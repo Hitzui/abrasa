@@ -34,7 +34,7 @@ $(function () {
     $('#splide__slide').click(function() {
         var dataValue = $(this).data("value");
         console.log(dataValue);
-    })
+    });
 
     // ------------------------------------------------------- //
     // Navbar Sticky
