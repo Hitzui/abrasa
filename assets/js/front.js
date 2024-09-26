@@ -1,4 +1,40 @@
+
+document.addEventListener( 'DOMContentLoaded', function () {
+    var main = new Splide( '#main-carousel-view-product', {
+        type      : 'fade',
+        rewind    : true,
+        pagination: false,
+        arrows    : false
+    } );
+
+
+    var thumbnails = new Splide( '#thumbnail-carousel-view-product', {
+        fixedWidth  : 100,
+        fixedHeight : 60,
+        gap         : 10,
+        rewind      : true,
+        pagination  : false,
+        isNavigation: true,
+        breakpoints : {
+            600: {
+                fixedWidth : 60,
+                fixedHeight: 44,
+            },
+        },
+    } );
+
+
+    main.sync( thumbnails );
+    main.mount();
+    thumbnails.mount();
+} );
+
 $(function () {
+
+    $('#splide__slide').click(function() {
+        var dataValue = $(this).data("value");
+        console.log(dataValue);
+    })
 
     // ------------------------------------------------------- //
     // Navbar Sticky

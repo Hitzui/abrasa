@@ -49,6 +49,7 @@ class AppAsset extends AssetBundle
         'https://unpkg.com/imagesloaded@4.1.4/imagesloaded.pkgd.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js',
         'https://unpkg.com/swiper/swiper-bundle.min.js',
+        'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js',
         'assets/js/front.js',
         //'https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js',
     ];

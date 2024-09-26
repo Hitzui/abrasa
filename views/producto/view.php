@@ -19,7 +19,7 @@ use yii\web\View;
 /** @var array $familias */
 /** @var Categoria $category */
 /** @var Articulo $find */
-/** @var Presentacion $presentaciones */
+/** @var array $presentaciones */
 
 $this->title = 'ABRASA - VER FICHA';
 if (empty($find->rutaimg)) {
@@ -69,9 +69,9 @@ $this->registerJsFile(
     Url::base(true) . '/admin/vendor/bootstrap/js/bootstrap.bundle.js',
     ['depends' => [AppAsset::class]]
 );
-$js = <<<JS
+/*$js = <<<JS
 document.addEventListener( 'DOMContentLoaded', function () {
-  var main = new Splide( '#main-carousel', {
+  var main = new Splide( '#main-carousel-view-product', {
     type      : 'fade',
     rewind    : true,
     pagination: false,
@@ -79,7 +79,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
   } );
 
 
-  var thumbnails = new Splide( '#thumbnail-carousel', {
+  var thumbnails = new Splide( '#thumbnail-carousel-view-product', {
     fixedWidth  : 100,
     fixedHeight : 60,
     gap         : 10,
@@ -101,7 +101,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 } );
 JS;
 
-$this->registerJs($js, View::POS_END);
+$this->registerJs($js, View::POS_END);*/
 
 if ($familias !== null) {
     $linkFamilias = "";
@@ -132,7 +132,7 @@ if ($familias !== null) {
                 </div>
                 <div class="row" id="articulos">
                     <div class="col-md-4">
-                        <section id="main-carousel" class="splide">
+                        <section id="main-carousel-view-product" class="splide">
                             <div class="splide__track">
                                 <ul class="splide__list">
                                     <li class="splide__slide">
@@ -163,7 +163,7 @@ if ($familias !== null) {
                         </section>
                         <p>&nbsp;</p>
                         <section
-                                id="thumbnail-carousel"
+                                id="thumbnail-carousel-view-product"
                                 class="splide"
                                 aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
                         >
@@ -172,12 +172,14 @@ if ($familias !== null) {
                                     <li class="splide__slide">
                                         <img src="<?= Url::base(true).'/'. $find->rutaimg ?>"
                                              alt="<?= $find->descripcion ?>"
+                                             data-value="<?= $find->descripcion ?>"
                                              style="max-height: 60px"/>
                                     </li>
                                     <?php
                                     foreach ($presentaciones as $value):
+                                        /**@var Presentacion $value */
                                         ?>
-                                        <li class="splide__slide">
+                                        <li class="splide__slide" data-value="<?= $value->descripcion?>">
                                             <img src="<?= $value->ruta ?>"
                                                  alt="" style="max-height: 60px" />
                                         </li>
@@ -187,6 +189,7 @@ if ($familias !== null) {
                                 </ul>
                             </div>
                         </section>
+                        <p>&nbsp;</p>
                         <a href="#" onclick="window.history.back(); return false;" style="font-size: 20px;">
                             <i class="fas fa-long-arrow-alt-left"></i> Regresar
                         </a>
