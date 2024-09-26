@@ -31,8 +31,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 $(function () {
 
-    $('#splide__slide').click(function() {
-        var dataValue = $(this).data("value");
+    $('.splide__slide').on('click',function(event) {
+        let dataValue = $(this).data("value");
         console.log(dataValue);
     });
 
