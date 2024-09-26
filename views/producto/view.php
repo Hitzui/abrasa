@@ -197,7 +197,7 @@ if ($familias !== null) {
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <h2><strong><?= Html::decode($find->descripcion) ?></strong></h2>
+                                    <h2><strong id="titulo"><?= Html::decode($find->descripcion) ?></strong></h2>
                                 </div>
                                 <div class="col-md-3">
                                     <a href="#" onclick="window.history.back(); return false;">Volver atras</a>

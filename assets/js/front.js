@@ -33,13 +33,14 @@ $(function () {
     main.mount();
     thumbnails.mount();
 
-    thumbnails.on( 'move', function (event) {
-        console.log( 'move', event );
+    thumbnails.on( 'active', function (event) {
+        let dataValue =event.slide.getAttribute('data-value');
+        $("#titulo").text(dataValue);
     } );
 
     $('.splide__slide').on('click',function(event) {
         let dataValue = $(this).data("value");
-        console.log(dataValue);
+        $("#titulo").text(dataValue);
     });
 
     // ------------------------------------------------------- //
