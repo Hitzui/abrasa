@@ -1,47 +1,5 @@
 
-document.addEventListener( 'DOMContentLoaded', function () {
-
-} );
-
 $(function () {
-
-    let main = new Splide( '#main-carousel-view-product', {
-        type      : 'fade',
-        rewind    : true,
-        pagination: false,
-        arrows    : false
-    } );
-
-
-    let thumbnails = new Splide( '#thumbnail-carousel-view-product', {
-        fixedWidth  : 100,
-        fixedHeight : 60,
-        gap         : 10,
-        rewind      : true,
-        pagination  : false,
-        isNavigation: true,
-        breakpoints : {
-            600: {
-                fixedWidth : 60,
-                fixedHeight: 44,
-            },
-        },
-    } );
-
-
-    main.sync( thumbnails );
-    main.mount();
-    thumbnails.mount();
-
-    thumbnails.on( 'active', function (event) {
-        let dataValue =event.slide.getAttribute('data-value');
-        $("#titulo").text(dataValue);
-    } );
-
-    $('.splide__slide').on('click',function(event) {
-        let dataValue = $(this).data("value");
-        $("#titulo").text(dataValue);
-    });
 
     // ------------------------------------------------------- //
     // Navbar Sticky

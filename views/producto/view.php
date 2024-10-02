@@ -69,17 +69,16 @@ $this->registerJsFile(
     Url::base(true) . '/admin/vendor/bootstrap/js/bootstrap.bundle.js',
     ['depends' => [AppAsset::class]]
 );
-/*$js = <<<JS
-document.addEventListener( 'DOMContentLoaded', function () {
-  var main = new Splide( '#main-carousel-view-product', {
+$js = <<<JS
+let main = new Splide( '#main-carousel-view-product', {
     type      : 'fade',
     rewind    : true,
     pagination: false,
     arrows    : false
-  } );
+} );
 
 
-  var thumbnails = new Splide( '#thumbnail-carousel-view-product', {
+let thumbnails = new Splide( '#thumbnail-carousel-view-product', {
     fixedWidth  : 100,
     fixedHeight : 60,
     gap         : 10,
@@ -87,21 +86,30 @@ document.addEventListener( 'DOMContentLoaded', function () {
     pagination  : false,
     isNavigation: true,
     breakpoints : {
-      600: {
-        fixedWidth : 60,
-        fixedHeight: 44,
-      },
+        600: {
+            fixedWidth : 60,
+            fixedHeight: 44,
+        },
     },
-  } );
-
-
-  main.sync( thumbnails );
-  main.mount();
-  thumbnails.mount();
 } );
+
+
+main.sync( thumbnails );
+main.mount();
+thumbnails.mount();
+
+thumbnails.on( 'active', function (event) {
+    let dataValue =event.slide.getAttribute('data-value');
+    $("#titulo").text(dataValue);
+} );
+
+$('.splide__slide').on('click',function(event) {
+    let dataValue = $(this).data("value");
+    $("#titulo").text(dataValue);
+});
 JS;
 
-$this->registerJs($js, View::POS_END);*/
+$this->registerJs($js, View::POS_END);
 
 if ($familias !== null) {
     $linkFamilias = "";
