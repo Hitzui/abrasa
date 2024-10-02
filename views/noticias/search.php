@@ -11,6 +11,57 @@ $this->title = 'ABRASA - EVENTOS';
 
 $this->registerCssFile('/assets/css/noticias.css');
 $this->registerJsFile('/assets/js/lodash.min.js');
+
+function isYouTubeUrl($url)
+{
+    $patterns = [
+        '/youtube\.com\/\?v=[^&]+/',  // URLs de YouTube estándar
+        '/youtu\.be\/[^?]+/'              // URLs cortas de YouTube
+    ];
+
+    foreach ($patterns as $pattern) {
+        if (preg_match($pattern, $url)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function getUrlType($url)
+{
+    // Comprobar si es un video de YouTube
+    if (isYouTubeUrl($url)) {
+        return 'YouTube';
+    }
+
+    // Obtener la extensión del archivo
+    $path = parse_url($url, PHP_URL_PATH);
+    $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+    // Comprobar si es un archivo MP4
+    if ($extension === 'mp4') {
+        return 'Video';
+    }
+
+    // Comprobar si es una imagen
+    $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    if (in_array($extension, $imageExtensions)) {
+        return 'Imagen';
+    }
+
+    // Obtener los headers del contenido para verificar el tipo MIME
+    $headers = get_headers($url, 1);
+    if (isset($headers['Content-Type'])) {
+        $contentType = is_array($headers['Content-Type']) ? $headers['Content-Type'][0] : $headers['Content-Type'];
+        if (strpos($contentType, 'image/') === 0) {
+            return 'Imagen';
+        } elseif (strpos($contentType, 'video/') === 0) {
+            return 'Video';
+        }
+    }
+
+    return 'Unknown';
+}
 ?>
 <p>&nbsp;</p>
 <div class="content">
