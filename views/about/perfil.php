@@ -23,6 +23,7 @@ try {
     $this->registerCssFile($baseUrl . '/assets/css/style.css');
     $this->registerCssFile('https://unpkg.com/swiper@7/swiper-bundle.min.css');
     $this->registerCssFile($baseUrl . '/assets/css/perfil.css');
+    $this->registerJsFile($baseUrl . '/assets/vendor/owl.carousel/assets/owl.carousel.js', ['depends' => [JqueryAsset::class]]);
     $this->registerJsFile($baseUrl . '/assets/js/glightbox.js', ['depends' => [JqueryAsset::class]]);
     $this->registerJsFile('https://unpkg.com/swiper@7/swiper-bundle.min.js');
     $this->registerJsFile($baseUrl . '/assets/vendor/jquery.easing/jquery.easing.min.js', ['depends' => [AssetBundle::class]]);
