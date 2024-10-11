@@ -216,6 +216,10 @@ class NoticiasController extends Controller
     public function actionDelete(int $id): Response
     {
         try {
+            $imagenesNoticias = Imagenes::find()->where(['idnoticia'=>$id])->all();
+            foreach ($imagenesNoticias as $imagen) {
+                Imagenes::findone($imagen->idimagenes)->delete();
+            }
             $this->findModel($id)->delete();
         } catch (StaleObjectException|NotFoundHttpException|\Throwable $e) {
             Yii::$app->session->setFlash('error', $e->getMessage());
