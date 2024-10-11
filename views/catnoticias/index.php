@@ -21,7 +21,11 @@ $this->params['breadcrumbs'][] = '/' . $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php try {
+    <?php
+    if ( Yii::$app->session->hasFlash('error') ) {
+        echo Yii::$app->session->getFlash('error');
+    }
+    try {
         echo GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,

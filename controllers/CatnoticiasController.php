@@ -128,7 +128,6 @@ class CatnoticiasController extends Controller
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return Response
-     * @noinspection PhpMultipleClassDeclarationsInspection
      */
     public function actionDelete(int $id): Response
     {
