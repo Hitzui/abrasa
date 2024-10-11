@@ -513,7 +513,7 @@ try {
                 foreach ($articulos as $articulo) {
                     /* @var $articulo Articulo */
                     if (empty($articulo->rutaimg) || strlen($articulo->rutaimg) <= 5) {
-                        $articulo->rutaimg = Url::home(true) . '/uploads/logo.png';
+                        $articulo->rutaimg = Url::home(true) . 'uploads/logo.png';
                     }
                     ?>
                     <div class="swiper-slide">
