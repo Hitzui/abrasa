@@ -218,9 +218,10 @@ class NoticiasController extends Controller
         try {
             $this->findModel($id)->delete();
         } catch (StaleObjectException|NotFoundHttpException|\Throwable $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
         }
 
-        return $this->redirect(['index']);
+        return $this->redirect(['alls']);
     }
 
     /**
