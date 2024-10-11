@@ -522,7 +522,7 @@ try {
                                 <span><?= $articulo->descripcion ?></span>
                             </div>
                             <div class="imagen_producto">
-                                <img src="/<?= $articulo->rutaimg ?>" alt="Abrasa" style="object-fit: contain" />
+                                <img src="<?= $articulo->rutaimg ?>" alt="Abrasa" style="object-fit: contain" />
                             </div>
                             <div style="text-align: right;overflow: hidden;padding:5px">
                                 <a href="<?= Url::to(["producto/view", 'idarticulo' => $articulo->idarticulo]) ?>">
