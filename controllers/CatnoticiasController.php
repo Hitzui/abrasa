@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Subnoticias;
 use Yii;
 use app\models\Catnoticias;
 use app\models\CatnoticiasSearch;
@@ -132,6 +133,10 @@ class CatnoticiasController extends Controller
     public function actionDelete(int $id): Response
     {
         try {
+            $subCategoriaNoticias = Subnoticias::findAll(['idcategoria' => $id]);
+            foreach ($subCategoriaNoticias as $subnoticias){
+                $subnoticias->delete();
+            }
             $this->findModel($id)->delete();
         } catch (\Exception|\Throwable $e) {
             Yii::$app->session->setFlash('error', $e->getMessage());
