@@ -323,6 +323,15 @@ $categorias = Categoria::find()->orderBy('nombre')->all();
     </footer>
 </div>
 <?php $this->endBody() ?>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8CX0LMT3Q3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8CX0LMT3Q3');
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"
         type="application/javascript"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
